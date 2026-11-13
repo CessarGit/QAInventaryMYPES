@@ -1,0 +1,80 @@
+{
+    "_nota": "Requisitos de la matriz de trazabilidad (Tabla 14 ampliada). prioridad: alta | media. Los RQ-07 a RQ-12 se agregaron en la Fase 1 a partir de los riesgos del código.",
+    "requisitos": [
+        {
+            "id": "RQ-01",
+            "descripcion": "Acceso según el rol (Tabla 5)",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-02",
+            "descripcion": "La venta descuenta el stock",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-03",
+            "descripcion": "Reporte de ventas del año con totales correctos",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-04",
+            "descripcion": "Alta de producto con marca, categoría y tienda",
+            "prioridad": "media"
+        },
+        {
+            "id": "RQ-05",
+            "descripcion": "Gestión de usuarios y grupos",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-06",
+            "descripcion": "Contraseñas almacenadas con hash",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-07",
+            "descripcion": "No se puede vender más que el stock disponible",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-08",
+            "descripcion": "El login valida correo y contraseña",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-09",
+            "descripcion": "Los totales de la venta se calculan en el servidor",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-10",
+            "descripcion": "Anular una venta devuelve el stock",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-11",
+            "descripcion": "La venta se guarda completa o no se guarda (atomicidad)",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-12",
+            "descripcion": "Los datos del cliente se muestran escapados (sin XSS)",
+            "prioridad": "alta"
+        },
+        {
+            "id": "RQ-13",
+            "descripcion": "Una persona nueva completa una venta sin ayuda",
+            "prioridad": "media"
+        },
+        {
+            "id": "RQ-14",
+            "descripcion": "Funciona en dos navegadores comunes",
+            "prioridad": "media"
+        },
+        {
+            "id": "RQ-15",
+            "descripcion": "Formularios protegidos contra CSRF",
+            "prioridad": "alta"
+        }
+    ]
+}

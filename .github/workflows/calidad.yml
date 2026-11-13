@@ -1,0 +1,73 @@
+# Integración continua con SEMÁFORO (Tabla 18).
+# Se ejecuta en cada push y en cada Pull Request.
+#   🔴 ROJO  -> el job falla y el PR no se puede fusionar (activa "branch protection").
+#   🟡 ÁMBAR -> el job pasa con una advertencia: fusionar solo con aprobación y riesgo registrado.
+#   🟢 VERDE -> se puede fusionar.
+name: Calidad (semáforo)
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  calidad:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7          # misma versión del documento (Tabla 2)
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: stock_test
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_USER: test
+      DB_PASS: test
+      DB_NAME: stock_test
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 30        # la auditoría de proceso revisa los últimos commits
+
+      - name: PHP 7.4 (versión del proyecto) con pcov para cobertura
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: mysqli, mbstring, dom, json
+          coverage: pcov
+
+      - name: Instalar dependencias de desarrollo (PHPUnit)
+        run: php composer.phar install --no-interaction --no-progress || composer install --no-interaction --no-progress
+
+      - name: "1. Técnica estática"
+        run: php scripts/analisis_estatico.php
+
+      - name: "2. Pruebas (unitarias, integración y sistema)"
+        run: vendor/bin/phpunit || true      # no se corta aquí: decide el semáforo
+
+      - name: "3. Semáforo"
+        run: php scripts/semaforo.php
+
+      - name: "4. Métricas y evidencia de auditoría"
+        if: always()
+        run: |
+          php scripts/metricas.php "ci-${GITHUB_SHA::7}"
+          php scripts/auditoria.php
+          cat reports/metricas.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Guardar reportes como evidencia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-calidad
+          path: reports/

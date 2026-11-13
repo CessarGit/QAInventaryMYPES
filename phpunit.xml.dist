@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Configuración de PHPUnit 9.6 para InventorySystem.
+  Ejecutar:  vendor/bin/phpunit                 (todo)
+             vendor/bin/phpunit -testsuite unitarias
+  Para medir cobertura se necesita la extensión pcov o xdebug.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheResult="false"
+         failOnRisky="false"
+         convertDeprecationsToExceptions="false"
+         verbose="true">
+
+    <testsuites>
+        <testsuite name="unitarias">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="integracion">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="sistema">
+            <directory>tests/Sistema</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">application/models</directory>
+            <directory suffix=".php">application/libraries</directory>
+        </include>
+        <report>
+            <clover outputFile="reports/clover.xml"/>
+            <html outputDirectory="reports/cobertura"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
+    </coverage>
+
+    <logging>
+        <junit outputFile="reports/junit.xml"/>
+    </logging>
+
+    <php>
+        <!-- Base de PRUEBAS (nunca la de producción). Se pueden sobrescribir con variables de entorno. -->
+        <env name="DB_HOST" value="127.0.0.1" force="false"/>
+        <env name="DB_PORT" value="3306" force="false"/>
+        <env name="DB_USER" value="test" force="false"/>
+        <env name="DB_PASS" value="test" force="false"/>
+        <env name="DB_NAME" value="stock_test" force="false"/>
+    </php>
+</phpunit>
