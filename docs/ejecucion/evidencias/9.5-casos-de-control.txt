@@ -1,0 +1,37 @@
+# Paso 9.5 · Prueba independiente: casos de control propios (fase 4 del plan de auditoría, Tabla 16)
+# 2026-11-14 16:10 CST · main d0bbb34 · CodeIgniter 3.1.6
+# C1 a C3: peticiones HTTP con sesión, cookies, token CSRF y formularios reales contra el staging apuntado a stock_test (PC-0); sin la suite PHPUnit.
+# C4: scripts de respaldo y restauración sobre stock, restaurado en stock_restore.
+
+Caso | Resultado | Obtenido
+C1 Bodega abre orders/update/2 | Pasa | redirigido a dashboard; no recibe el formulario de la venta
+C2 Venta con 0 y con 5 (stock 4) | Pasa | ventas 1 → 1; stock 4 → 4
+C3 Ventas envía Settings con groups=14 | Pasa | formulario procesado; grupo 11 → 11
+
+== C4 · Restaurar el último respaldo en una base aparte y comparar los conteos
+Respaldo de 'stock' · inicio: 2026-11-14 16:10:24 CST
+Respaldo de 'stock' · fin:    2026-11-14 16:10:24 CST
+Archivo: backups/stock_20261114_161024.sql.gz (4,0K)
+Suma:    backups/stock_20261114_161024.sql.gz.sha256
+Último respaldo: backups/stock_20261114_161024.sql.gz
+Verificando la suma sha256...
+Suma correcta.
+Restauración en 'stock_restore' · inicio: 2026-11-14 16:10:24 CST
+Restauración en 'stock_restore' · fin:    2026-11-14 16:10:25 CST
+Siguiente paso: bash scripts/verificar-conteos.sh <base_origen> stock_restore
+Tabla                   stock stock_restore  ¿Igual?
+---------------- ------------ ------------  -------
+attributes                  0            0  sí
+attribute_value             8            8  sí
+brands                      3            3  sí
+categories                  1            1  sí
+company                     1            1  sí
+groups                      2            2  sí
+orders                      0            0  sí
+orders_item                 0            0  sí
+products                    1            1  sí
+stores                      1            1  sí
+users                       1            1  sí
+user_group                  1            1  sí
+Resultado: las 12 tablas coinciden.
+código: 0
