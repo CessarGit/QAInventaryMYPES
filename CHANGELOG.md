@@ -6,6 +6,10 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 
 ## [Unreleased]
 
+## [QAInventaryMYPES 1.0.0] - 2026-11-14
+
+Cierre de la iteración de calidad 1 (CodeIgniter 3.1.6). La actualización a 3.1.13 queda para la iteración 2 (#52).
+
 ### Añadido
 
 - Entorno de staging con Docker: servicio `app` (`php:7.4.33-apache` con `mod_rewrite`, `mysqli`, `pdo_mysql`, `pcov` y Composer 2.2) y servicio `db` (`mysql:5.7.44`, base `stock`, volumen persistente y carga inicial de `stock.sql`) (`0ef5d0d`).
@@ -24,6 +28,7 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - Decisiones del autor D-01 a D-08 y casos CP-15 a CP-20 (`6a0ced1`, `7d2f44b`, `2003492`, `86c7792`).
 - Suite PHPUnit 9.6 con ci-phpunit-test 3: 29 pruebas de stock, permisos, productos, reporte y contraseñas, ejecutada en la CI con cobertura (`7cd3841`, `3a826a5`, `eaa15e4`).
 - Registro de ejecución: rondas 1 y 2, pruebas manuales 5.4 y línea base de regresión, etiqueta `pruebas-base-3.1.6` (`3b85bdf`, `3a3f1cb`).
+- Documentación del ciclo PHVA por fases en `docs/ciclo-deming/` (Planificar, Hacer, Verificar y Actuar) y evidencia de la prueba independiente del paso 9.5 (`9.5-casos-de-control.txt`).
 
 ### Cambiado
 
@@ -34,6 +39,7 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - Matriz de roles: Settings del Administrador pasa a RU propia (`bc92004`).
 - Zona horaria del staging `America/El_Salvador` (`637fba6`).
 - El reporte anual suma el neto de todas las ventas del año, no solo las pagadas (D-03, D-08; #37, `cb0d116`).
+- `CLAUDE.md`: reglas 18 a 25 de estandarización (E-1 a E-8, paso 10); la plantilla de PR incorpora 5 casillas para esas reglas.
 
 ### Eliminado
 
