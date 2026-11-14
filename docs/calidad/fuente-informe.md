@@ -264,3 +264,41 @@ Extracto literal del informe *Gestión de la calidad de un sistema web de invent
 
 *Nota.* Elaboración a partir de los datos de prueba realizado al sistema
 
+
+## Necesidades de mantenimiento por categoría (Tabla 11 de mantenimiento)
+
+| Categoría | Situación en el proyecto | Ejemplo concreto | Prioridad |
+| :---- | :---- | :---- | :---- |
+| Correctivo | Las pruebas aún no se ejecutan; los defectos aparecerán al ejecutarlas | Corregir un descuento de stock incorrecto detectado por CP-01 o CP-02 | Alta, según severidad |
+| Adaptativo | PHP 7.4 no tiene soporte oficial y CodeIgniter está en 3.1.6 frente a 3.1.13; MySQL 5.7 también salió de soporte | Actualizar a CodeIgniter 3.1.13 y planificar la migración de PHP y de MySQL | Alta |
+| Perfectivo | Los reportes son solo anuales y el proyecto menciona un catálogo de clientes sin módulo propio | Proponer reportes por período y un módulo de clientes, a decidir con los usuarios | Media o baja |
+| Preventivo | La validación de permisos está repetida en cada controlador; no hay pruebas unitarias | Centralizar la autorización y crear la suite de PHPUnit antes de refactorizar | Media |
+
+*Nota.* Elaboración a partir del estado inicial del proyecto.
+
+## Flujo de gestión de solicitudes (Figura 1 de mantenimiento)
+
+Texto del informe: "Cada solicitud se registra como una issue de GitHub, se clasifica por categoría y severidad, se implementa en una rama según la estrategia de ramas del proyecto y solo se despliega después de las pruebas de regresión, la revisión por pares y la firma SQA."
+
+Secuencia: issue en GitHub → clasificación (categoría y severidad) → rama → implementación → pruebas de regresión → revisión por pares → firma SQA → despliegue.
+
+*Desviación en la ejecución:* el autor trabaja solo, así que la revisión por pares se sustituye por la autorrevisión con la lista L1 más el semáforo verde de la integración continua.
+
+## Buenas prácticas de mantenimiento (Tabla 12 de mantenimiento, filas usadas)
+
+| Práctica | Aplicación en el proyecto |
+| :---- | :---- |
+| Documentación de cambios | Changelog por versión y mensajes de commit convencionales; manuales actualizados con cada cambio |
+| Gestión de solicitudes | Issues de GitHub con etiquetas de categoría y severidad |
+| Gestión de la deuda técnica | Lista de deuda técnica (versiones antiguas, autorización repetida, falta de pruebas) con una parte de cada iteración dedicada a pagarla |
+
+## Métricas de mantenimiento (Tabla 13 de mantenimiento)
+
+| Métrica | Definición | Fuente |
+| :---- | :---- | :---- |
+| Defectos reportados por mes | Número de issues de tipo correctivo abiertas en el mes | Issues de GitHub |
+| Tiempo promedio de resolución | Tiempo entre la apertura y el cierre de una issue, por severidad | Issues de GitHub |
+| Distribución por categoría | Porcentaje de solicitudes correctivas, adaptativas, perfectivas y preventivas | Etiquetas de las issues |
+| Regresiones detectadas | Casos que pasaban y fallan después de un cambio | Informe de pruebas de regresión |
+
+*Nota.* Elaboración a partir de ISO/IEC/IEEE 14764. No se fijan metas numéricas hasta tener línea base.
