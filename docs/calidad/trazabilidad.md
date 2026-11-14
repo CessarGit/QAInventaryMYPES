@@ -8,18 +8,18 @@ Resuelve el choque de identificadores entre la matriz de trazabilidad original (
 
 | Requisito | Casos de prueba | Estado |
 | :---- | :---- | :---- |
-| RQ-01 Acceso según el rol | CP-04, CP-05, CP-06, CP-07, CP-10 | Pendiente |
-| RQ-02 La venta descuenta el stock | CP-01, CP-02, CP-03 | Pendiente |
+| RQ-01 Acceso según el rol | CP-04, CP-05, CP-06, CP-07, CP-10, CP-15, CP-16, CP-18 | Pendiente |
+| RQ-02 La venta descuenta el stock | CP-01, CP-02, CP-03, CP-19 | Pendiente |
 | RQ-03 Reporte de ventas del año | CP-09, CP-12 | Pendiente |
-| RQ-04 Alta de producto | CP-08, CP-11 | Pendiente |
+| RQ-04 Alta de producto | CP-08, CP-11, CP-17, CP-20 | Pendiente |
 | RQ-05 Gestión de usuarios y grupos | CP-13 | Pendiente |
 | RQ-06 Contraseñas protegidas | CP-14 | Pendiente |
 
-Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso falla). Los catorce casos están diseñados y sin ejecutar.
+Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso falla). Los veinte casos están diseñados y sin ejecutar (meta de la Tabla 21 de PHVA).
 
 ## 2. Fichas de los casos
 
-**Precondición común (PC-0):** base de pruebas `stock_test` con un grupo por cada rol de la Tabla 5 (Gerente, Ventas, Bodega, Logística, Administrador), configurado con los permisos de su fila, y un usuario activo por rol. El dump `stock.sql` solo trae dos grupos (Administrator y Owners), por lo que estos datos deben prepararse para las pruebas.
+**Precondición común (PC-0):** base de pruebas `stock_test` con un grupo por cada rol de la Tabla 5 (Gerente, Ventas, Bodega, Logística, Administrador), configurado con los permisos de su fila, y un usuario activo por rol. El dump `stock.sql` solo trae dos grupos (Administrator y Owners), por lo que estos datos deben prepararse para las pruebas. Se preparan con `scripts/preparar-stock-test.sh` y `application/tests/_datos/pc0.sql` (subpaso 4.4).
 
 ### CP-01 · Vender una cantidad igual al stock
 
@@ -221,6 +221,94 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Resultado esperado | Contraseña almacenada con hash, no en texto plano. Algoritmo exigido: hash adaptativo, bcrypt o argon2 con `password_hash` (D-04); MD5 o SHA-1 sin sal es falla |
 | Evidencia prevista | Consulta a la base |
 
+### CP-15 · Ventas intenta cambiar su grupo desde Settings (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-01 |
+| Módulo | Settings |
+| Nivel | Sistema |
+| Técnica | Seguridad (petición manipulada) |
+| Precondiciones | PC-0; sesión de `ventas_test` |
+| Datos | Formulario de Settings con contraseña nueva válida y un campo `groups` añadido a mano con el id del grupo Administrador |
+| Pasos | 1. Enviar el formulario manipulado. 2. Consultar el grupo de `ventas_test` en la base de pruebas. |
+| Resultado esperado | El grupo de `ventas_test` no cambia (Tabla 5: Settings RU solo de la cuenta propia; Ventas sin acceso a Groups) |
+| Evidencia prevista | Consulta de `user_group` antes y después |
+| Origen | A-01 (H-RV01-02, H-RV04-01) |
+
+### CP-16 · Acceso sin sesión a Reports y a métodos sin permiso (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-01 |
+| Módulo | Reports, Attributes, Orders, Products |
+| Nivel | Sistema |
+| Técnica | Seguridad (URL directa) |
+| Precondiciones | PC-0; sin sesión iniciada |
+| Datos | URL de `reports` y de los métodos sin comprobación de permiso del Anexo B de RV-01 (por ejemplo `attributes/createValue`, `orders/fetchOrdersData`, `products/upload_image`) |
+| Pasos | 1. Abrir cada URL sin sesión. 2. Registrar la respuesta. |
+| Resultado esperado | Redirección al inicio de sesión o acceso denegado, sin devolver datos ni ejecutar la operación (Tabla 5; Tabla 13 de seguridad, control de acceso) |
+| Evidencia prevista | Respuesta de cada URL |
+| Origen | H-01 (H-RV01-03 a H-RV01-06, H-RV03-01) |
+
+### CP-17 · Nombre de producto con código de script (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-04 |
+| Módulo | Products, Orders |
+| Nivel | Sistema |
+| Técnica | Seguridad (inyección de código, XSS) |
+| Precondiciones | PC-0; sesión de `gerente_test` |
+| Datos | Nombre de producto `<script>alert(1)</script>` |
+| Pasos | 1. Crear el producto. 2. Abrir el listado de productos. 3. Crear una venta con ese producto y abrir la venta y la factura. |
+| Resultado esperado | El texto se muestra literal y no se ejecuta en ninguna pantalla (Tabla 13 de seguridad, validación de entradas; L1, pregunta 5) |
+| Evidencia prevista | Captura de cada pantalla |
+| Origen | H-RV03-04 |
+
+### CP-18 · Formulario enviado sin token CSRF (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-01 |
+| Módulo | Brands (alta) |
+| Nivel | Sistema |
+| Técnica | Seguridad (falsificación de petición, CSRF) |
+| Precondiciones | PC-0; sesión de `gerente_test` abierta en el navegador |
+| Datos | Página HTML local con un formulario de alta de marca que apunta al staging, sin token |
+| Pasos | 1. Abrir la página local y enviar el formulario. 2. Revisar si la marca se creó. |
+| Resultado esperado | La petición se rechaza y la marca no se crea (Tabla 13 de seguridad: activar la protección CSRF de CodeIgniter) |
+| Evidencia prevista | Respuesta y listado de marcas |
+| Origen | H-RV04-02, H-RV04-04 |
+
+### CP-19 · Vender una unidad (valor límite) (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-02 |
+| Módulo | Orders |
+| Nivel | Unitaria |
+| Técnica | Valores límite |
+| Precondiciones | PC-0; producto con stock N = 5 (D-01); sesión de `ventas_test` |
+| Datos | Cantidad vendida = 1 |
+| Pasos | 1. Registrar la venta. 2. Consultar el stock del producto. |
+| Resultado esperado | Venta registrada y stock 4 (N − 1) (Tabla 7 de pruebas, valores límite) |
+| Evidencia prevista | Stock antes y después |
+
+### CP-20 · Nombre de producto más largo que el límite (valor límite) (nuevo)
+
+| Campo | Contenido |
+| :---- | :---- |
+| Requisito | RQ-04 |
+| Módulo | Products |
+| Nivel | Unitaria |
+| Técnica | Valores límite |
+| Precondiciones | PC-0; sesión de `gerente_test` |
+| Datos | Nombre de 256 caracteres; límite de 255 (D-05) |
+| Pasos | 1. Dar de alta el producto con los demás campos obligatorios válidos (D-02). 2. Revisar el resultado y la base. |
+| Resultado esperado | Rechazo con mensaje de validación, o guardado truncado a 255 caracteres sin error de la base (D-05) |
+| Evidencia prevista | Mensaje o consulta a la base |
+
 ## 3. Cambios respecto al informe
 
 1. **Renumeración.** La Tabla 14 de PHVA usaba CP-01 a CP-06 con un significado distinto al de la Tabla 8 de pruebas. Se adoptan los identificadores de la Tabla 8. Correspondencia:
@@ -237,3 +325,4 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 2. **Casos nuevos.** CP-13 y CP-14 se crean porque RQ-05 y RQ-06 no tenían caso en la Tabla 8 de pruebas. Su nivel y técnica son una propuesta aprobada por el autor; el informe no los fija.
 3. **Asociaciones.** CP-05 y CP-10 quedan asociados a RQ-01.
 4. **Precondición común.** Se añade PC-0 (grupos de los cinco roles), porque los datos semilla no los contienen.
+5. **Casos CP-15 a CP-20 (subpaso 5.1).** Seis casos nuevos para llegar a los 20 de la Tabla 21 de PHVA: cuatro de seguridad que confirman hallazgos de las revisiones (A-01, H-01, XSS y CSRF) y dos de valores límite (Tabla 7 de pruebas). Sus resultados esperados salen de la Tabla 5, la Tabla 13 de seguridad y las decisiones D-01, D-02 y D-05.
