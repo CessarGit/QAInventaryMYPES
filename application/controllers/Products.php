@@ -55,7 +55,7 @@ class Products extends Admin_Controller
             }
 			
 
-			$img = '<img src="'.base_url($value['image']).'" alt="'.$value['name'].'" class="img-circle" width="50" height="50" />';
+			$img = '<img src="'.base_url($value['image']).'" alt="'.html_escape($value['name']).'" class="img-circle" width="50" height="50" />';
 
             $availability = ($value['availability'] == 1) ? '<span class="label label-success">Active</span>' : '<span class="label label-warning">Inactive</span>';
 
@@ -70,7 +70,7 @@ class Products extends Admin_Controller
 			$result['data'][$key] = array(
 				$img,
 				$value['sku'],
-				$value['name'],
+				html_escape($value['name']),
 				$value['price'],
                 $value['qty'] . ' ' . $qty_status,
                 $store_data['name'],
