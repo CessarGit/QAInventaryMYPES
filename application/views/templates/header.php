@@ -48,6 +48,23 @@
 
   <!-- jQuery 3 -->
   <script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
+  <script>
+    // Token CSRF en los formularios POST y en las peticiones AJAX POST (#40)
+    var csrf_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    $.ajaxPrefilter(function (options) {
+      if (options.type && options.type.toUpperCase() === 'POST' && (options.data == null || typeof options.data === 'string')) {
+        options.data = (options.data ? options.data + '&' : '') + encodeURIComponent(csrf_name) + '=' + encodeURIComponent(csrf_hash);
+      }
+    });
+    $(function () {
+      $('form').each(function () {
+        if ((this.method || '').toLowerCase() === 'post' && !this.elements[csrf_name]) {
+          $('<input type="hidden">').attr('name', csrf_name).val(csrf_hash).appendTo(this);
+        }
+      });
+    });
+  </script>
   <!-- jQuery UI 1.11.4 -->
   <script src="<?php echo base_url('assets/bower_components/jquery-ui/jquery-ui.min.js') ?>"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
