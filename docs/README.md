@@ -5,10 +5,11 @@
 ## Calidad
 
 - [calidad/fuente-informe.md](calidad/fuente-informe.md): extracto literal de las tablas del informe; referencia de diseño de la iteración.
+- [calidad/fuente-informe-2.md](calidad/fuente-informe-2.md): segunda parte de la fuente de diseño, con las tablas para los pasos 2.3 a 10.
 - [calidad/matriz-roles.md](calidad/matriz-roles.md): Tabla 5, matriz de roles y permisos (única fuente de verdad sobre permisos).
 - [calidad/trazabilidad.md](calidad/trazabilidad.md): matriz de trazabilidad unificada (RQ-01 a RQ-06, CP-01 a CP-14) y fichas de los casos.
 - [calidad/hallazgos-topdown.md](calidad/hallazgos-topdown.md): confirmación de los hallazgos H-01 a H-06 en el código, con evidencia, y hallazgos adicionales.
-- `calidad/plan-pruebas-iteracion-1.md`: plan de pruebas de la iteración. Pendiente (paso 2).
+- [calidad/plan-pruebas-iteracion-1.md](calidad/plan-pruebas-iteracion-1.md): plan de pruebas de la iteración 1 (alcance, estrategia, recursos, cronograma, criterios, roles, registro y regla ante retrasos).
 
 ## Ejecución
 
