@@ -1,0 +1,145 @@
+# Verificación de salida de la Fase 2 · 2026-11-14 14:11 CST · main 3a3f1cb
+== Etiquetas ==
+linea-base
+pruebas-base-3.1.6
+v1
+== Historial de main (fase 2) ==
+3a3f1cb docs(calidad): registra la ronda 2 y la línea base de regresión 3.1.6
+64df852 fix(seguridad): activa la protección CSRF y envía el token en formularios y AJAX (#40)
+d71d88d docs(calidad): actualiza el cierre de hallazgos mayores tras #41
+bfbc8a4 fix(orders): escapa los datos de cliente, empresa y producto en las salidas (#41)
+cb0d116 fix(reports): suma el neto de todas las ventas del año (#37)
+86c7792 docs(calidad): registra D-08, el reporte cuenta todas las ventas
+0e7b086 docs(calidad): actualiza el cierre de hallazgos mayores tras #35 y #36
+d089c48 fix(orders): valida la cantidad y comprueba el stock en una transacción (#35, #36)
+c01c4d6 docs(calidad): actualiza el cierre de hallazgos mayores tras #34
+171c0d9 fix(users): Settings ignora el campo groups (#34)
+3b85bdf docs(calidad): cierra la ronda 1 y enlaza los defectos de las revisiones
+68dae2c docs(ejecucion): agrega el guion y los resultados de las pruebas manuales 5.4
+eaa15e4 ci(pruebas): fija el directorio de cobertura de pcov
+4d1118d docs(ejecucion): agrega la evidencia del semáforo rojo
+cf9912d docs(calidad): registra la ronda 1 de los casos automatizados
+3a826a5 test(suite): agrega las pruebas de stock, permisos, productos, reporte y contraseñas
+7cd3841 test(phpunit): agrega la suite con prueba de humo y la ejecuta en ci
+112915f chore(deps): fija phpunit 9.6 y ci-phpunit-test 3 para php 7.4
+2003492 docs(calidad): agrega los casos cp-15 a cp-20 (#31)
+4ef9c3c chore(claude): agrega el comando registrar-caso
+f936349 docs(calidad): corrige la evidencia de a-01
+7d2f44b docs(calidad): registra d-02 a d-06 y completa la trazabilidad
+13fd565 test(datos): agrega pc0 y script de preparación de stock_test
+6a0ced1 docs(calidad): registra las decisiones d-01 y d-07
+b6108e2 docs(ejecucion): registra la prueba de restauración y el simulacro rb-01 (#27)
+4e2cfc8 docs(calidad): agrega revisión rv-10 de los scripts de respaldo
+f9cf54d chore(scripts): agrega respaldo, restauración y verificación de conteos
+637fba6 chore(docker): ajusta zona horaria e ignora respaldos (#25)
+c25f957 docs(ejecucion): agrega bitácora y evidencias de los pasos 1 a 3
+770a8d3 docs(calidad): registra er de rv-01
+== Archivos versionados de la fase ==
+application/config/config.php
+application/controllers/Orders.php
+application/controllers/Products.php
+application/controllers/Reports.php
+application/controllers/Users.php
+application/models/Model_orders.php
+application/models/Model_reports.php
+application/tests/Bootstrap.php
+application/tests/controllers/Contrasenas_test.php
+application/tests/controllers/Orders_stock_test.php
+application/tests/controllers/Permisos_test.php
+application/tests/controllers/Productos_reporte_test.php
+application/tests/_datos/pc0.sql
+application/tests/DbTestCase.php
+application/tests/.gitignore
+application/tests/helpers/.gitkeep
+application/tests/hooks/.gitkeep
+application/tests/Humo_test.php
+application/tests/libraries/.gitkeep
+application/tests/mocks/autoloader.php
+application/tests/mocks/libraries/email.php
+application/tests/models/.gitkeep
+application/tests/phpunit.xml
+application/tests/_soporte/Pc0TestCase.php
+application/tests/TestCase.php
+application/tests/UnitTestCase.php
+application/views/login.php
+application/views/orders/create.php
+application/views/orders/edit.php
+application/views/reports/index.php
+application/views/templates/header.php
+backups/.htaccess
+.claude/commands/registrar-caso.md
+CLAUDE.md
+composer.json
+composer.lock
+docker/app/php.ini
+docker-compose.yml
+.dockerignore
+docs/calidad/decisiones-autor.md
+docs/calidad/hallazgos-topdown.md
+docs/calidad/registro-ejecucion.md
+docs/calidad/revisiones/README.md
+docs/calidad/revisiones/RV-01-matriz.md
+docs/calidad/revisiones/RV-03-orders.md
+docs/calidad/revisiones/RV-04-usuarios-permisos.md
+docs/calidad/revisiones/RV-10-scripts.md
+docs/calidad/trazabilidad.md
+docs/ejecucion/bitacora.md
+docs/ejecucion/evidencias/1.0-inventario.md
+docs/ejecucion/evidencias/1.1-error-apt-bullseye.txt
+docs/ejecucion/evidencias/1.4-semaforo-rojo.txt
+docs/ejecucion/evidencias/2.1-issues.txt
+docs/ejecucion/evidencias/2.2-L4.md
+docs/ejecucion/evidencias/4.2-restauracion.txt
+docs/ejecucion/evidencias/4.3-simulacro-rb01/simulacro-rb01.md
+docs/ejecucion/evidencias/5.4-pruebas-manuales/cp12-ventas.csv
+docs/ejecucion/evidencias/5.4-pruebas-manuales/cp18-sin-token.html
+docs/ejecucion/evidencias/5.4-pruebas-manuales/guion.md
+docs/ejecucion/evidencias/5.7-suite-base-3.1.6.txt
+docs/ejecucion/evidencias/fase1-verificacion.txt
+.github/dependabot.yml
+.github/workflows/calidad.yml
+.gitignore
+scripts/preparar-stock-test.sh
+scripts/respaldo.sh
+scripts/restaurar.sh
+scripts/verificar-conteos.sh
+== Secretos ==
+OK: .env no versionado
+OK: backups/ solo versiona .htaccess (sin volcados)
+OK: sin credenciales literales en archivos versionados
+== Entorno ==
+app running
+db running
+PHP 7.4.33 · pcov sí
+mysql  Ver 14.14 Distrib 5.7.44, for Linux (x86_64) using  EditLine wrapper
+CodeIgniter: CI_VERSION = '3.1.6' (system/core/CodeIgniter.php:58; actualización diferida, #52)
+== GitHub: PR abiertos ==
+30	chore(env): documenta TEST_USER_PASS	chore/env-test-user	OPEN	2026-11-14T18:11:09Z
+== GitHub: CI de main ==
+calidad success 3a3f1cb
+calidad success 64df852
+calidad success d71d88d
+== GitHub: issues (todos) ==
+52	OPEN	[Mantenimiento] Actualizar CodeIgniter a 3.1.13 (diferido a la próxima iteración)	tipo:adaptativo, sev:media	2026-11-14T20:10:29Z
+44	OPEN	[Defecto] H-RV04-07: contraseña visible en Settings	tipo:correctivo, sev:baja	2026-11-14T19:15:08Z
+43	OPEN	[Defecto] H-RV03-09: avisos de PHP con id de venta inexistente	tipo:correctivo, sev:media	2026-11-14T19:15:06Z
+42	OPEN	[Defecto] H-RV04-03: el id de sesión no cambia al iniciar sesión	tipo:correctivo, sev:media	2026-11-14T19:15:05Z
+41	CLOSED	[Defecto] CP-17: XSS almacenado en productos y ventas	tipo:correctivo, sev:alta	2026-11-14T19:31:38Z
+40	CLOSED	[Defecto] CP-18: formularios aceptan peticiones sin token CSRF	tipo:correctivo, sev:alta	2026-11-14T19:34:52Z
+38	OPEN	[Defecto] CP-08: el alta de producto no exige marca ni categoría	tipo:correctivo, sev:media	2026-11-14T18:31:34Z
+37	CLOSED	[Defecto] CP-09: el reporte anual no refleja la venta	tipo:correctivo, sev:alta	2026-11-14T19:28:11Z
+36	CLOSED	[Defecto] CP-03: se aceptan cantidades 0 y negativas	tipo:correctivo, sev:alta	2026-11-14T19:25:37Z
+35	CLOSED	[Defecto] CP-02: la venta supera el stock disponible	tipo:correctivo, sev:alta	2026-11-14T19:25:35Z
+34	CLOSED	[Defecto] CP-15: Settings permite cambiar el propio grupo (A-01)	tipo:correctivo, sev:critica	2026-11-14T19:22:58Z
+20	OPEN	[Mantenimiento] RV-04: gestión de usuarios y grupos (eliminación de grupos, permisos, correo único, alta sin transacción)	tipo:correctivo, sev:media	2026-11-14T15:44:32Z
+19	OPEN	[Mantenimiento] RV-03: user_id sobrescrito al editar una venta y número de factura repetible	tipo:correctivo, sev:media	2026-11-14T15:44:30Z
+18	OPEN	[Mantenimiento] RV-03/RV-04: salidas sin escapar en ventas, usuarios y grupos (XSS)	tipo:correctivo, sev:alta	2026-11-14T15:44:28Z
+17	OPEN	[Mantenimiento] RV-03: importes y estado de pago aceptados del navegador sin recalcular	tipo:correctivo, sev:alta	2026-11-14T15:44:26Z
+16	OPEN	[Mantenimiento] RV-03: integridad del stock al editar o eliminar una venta y con ventas simultáneas	tipo:correctivo, sev:alta	2026-11-14T15:44:24Z
+15	OPEN	[Mantenimiento] RV-01/RV-04: requisitos de seguridad sin definir (intentos de inicio de sesión, registro de eventos, sesión)	tipo:perfectivo, sev:media	2026-11-14T15:44:23Z
+14	OPEN	[Mantenimiento] RV-01: decisiones pendientes en la matriz de roles (Company, corrección de ventas, CRUD de Logística)	tipo:preventivo, sev:media	2026-11-14T15:44:21Z
+8	OPEN	[Mantenimiento] A-04: acceso de administrador del dashboard fijado a user_id == 1	tipo:preventivo, sev:baja	2026-11-14T05:19:05Z
+7	OPEN	[Mantenimiento] H-05: no existe catálogo de clientes	tipo:perfectivo, sev:baja	2026-11-14T02:36:52Z
+6	OPEN	[Mantenimiento] H-04: descuento de stock sin transacción ni comprobación de stock	tipo:correctivo, tipo:preventivo, sev:alta	2026-11-14T02:36:49Z
+5	OPEN	[Mantenimiento] H-02: documentar la relación entre Settings y Profile	tipo:preventivo, sev:baja	2026-11-14T02:36:46Z
+4	OPEN	[Mantenimiento] H-01: centralizar la validación de sesión y permisos	tipo:preventivo, sev:media	2026-11-14T02:36:44Z
