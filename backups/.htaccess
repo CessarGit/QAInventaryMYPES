@@ -1,0 +1,4 @@
+# Los respaldos de la base nunca se sirven por web (regla 15; Tabla 13 de seguridad).
+# La raíz del proyecto está montada en Apache (docker-compose.yml) y AllowOverride All
+# está activo (docker/app/Dockerfile), así que esta regla se aplica.
+Require all denied

@@ -22,3 +22,4 @@ application/logs/*
 # Respaldos de la base: nunca se versionan (regla 15; Tabla 11 de recuperación).
 # Se usa backups/* en lugar de backups/ para poder versionar backups/.htaccess en el 4.1.
 backups/*
+!backups/.htaccess
