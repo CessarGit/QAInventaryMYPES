@@ -1,0 +1,110 @@
+# Subpaso 5.7 · suite completa sobre main (64df852), CodeIgniter 3.1.6, stock_test
+# 2026-11-14 13:34 CST · comando: phpunit --testdox --coverage-text (sin excluir grupos)
+PHPUnit 9.6.39 by Sebastian Bergmann and contributors.
+
+Humo_test
+ ✔ Codeigniter carga y conecta a stock test
+
+Contrasenas_test
+ ✔ CP14 contrasena guardada con hash adaptativo
+
+Orders_stock_test
+ ✔ CP01 vender cantidad igual al stock
+ ✔ CP02 vender cantidad mayor que el stock
+ ✔ CP03 cantidad cero o negativa with data set "cero"
+ ✔ CP03 cantidad cero o negativa with data set "negativa"
+ ✔ CP19 vender una unidad
+
+Permisos_test
+ ✔ CP04 ventas intenta eliminar una venta
+ ✔ CP05 gerente edita una venta
+ ✔ CP06 bodega intenta abrir orders
+ ✔ CP07 administrador abre users
+ ✔ CP07 gerente intenta abrir users
+ ✔ CP10 cambia su contrasena y no la de otro
+ ✔ CP13 usuario nuevo del grupo ventas
+ ✔ CP15 ventas intenta cambiar su grupo desde settings
+ ✔ CP16 acceso sin sesion with data set "reports"
+ ✔ CP16 acceso sin sesion with data set "orders/fetchOrdersData"
+ ✔ CP16 acceso sin sesion with data set "products/upload_image"
+ ✔ CP16 acceso sin sesion with data set "attributes/createValue"
+
+Productos_reporte_test
+ ✔ CP08 alta con campos obligatorios vacios with data set "todos"
+ ✔ CP08 alta con campos obligatorios vacios with data set "product_name"
+ ✔ CP08 alta con campos obligatorios vacios with data set "sku"
+ ✔ CP08 alta con campos obligatorios vacios with data set "price"
+ ✔ CP08 alta con campos obligatorios vacios with data set "qty"
+ ✔ CP08 alta con campos obligatorios vacios with data set "store"
+ ✘ CP08 alta sin marca o categoria with data set "brands"
+   │
+   │ El producto no debe crearse
+   │ Failed asserting that 2 is identical to 1.
+   │
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:76
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:62
+   │ phpvfscomposer:///var/www/html/InventorySystem/vendor/phpunit/phpunit/phpunit:106
+   │ /var/www/html/InventorySystem/vendor/bin/phpunit:118
+   │
+
+ ✘ CP08 alta sin marca o categoria with data set "category"
+   │
+   │ El producto no debe crearse
+   │ Failed asserting that 2 is identical to 1.
+   │
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:76
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:62
+   │ phpvfscomposer:///var/www/html/InventorySystem/vendor/phpunit/phpunit/phpunit:106
+   │ /var/www/html/InventorySystem/vendor/bin/phpunit:118
+   │
+
+ ✔ CP09 venta se refleja en el reporte anual
+ ✔ CP20 nombre mas largo que el limite
+
+Time: 00:01.751, Memory: 18.00 MB
+
+Summary of non-successful tests:
+
+Productos_reporte_test
+ ✘ CP08 alta sin marca o categoria with data set "brands"
+   │
+   │ El producto no debe crearse
+   │ Failed asserting that 2 is identical to 1.
+   │
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:76
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:62
+   │ phpvfscomposer:///var/www/html/InventorySystem/vendor/phpunit/phpunit/phpunit:106
+   │ /var/www/html/InventorySystem/vendor/bin/phpunit:118
+   │
+
+ ✘ CP08 alta sin marca o categoria with data set "category"
+   │
+   │ El producto no debe crearse
+   │ Failed asserting that 2 is identical to 1.
+   │
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:76
+   │ /var/www/html/InventorySystem/application/tests/controllers/Productos_reporte_test.php:62
+   │ phpvfscomposer:///var/www/html/InventorySystem/vendor/phpunit/phpunit/phpunit:106
+   │ /var/www/html/InventorySystem/vendor/bin/phpunit:118
+   │
+
+FAILURES!
+Tests: 29, Assertions: 94, Failures: 2.
+
+
+Code Coverage Report:      
+  2026-11-14 13:35:01      
+                           
+ Summary:                  
+  Classes:  0.00% (0/4)    
+  Methods: 29.03% (9/31)   
+  Lines:   44.67% (197/441)
+
+Model_orders
+  Methods:  25.00% ( 2/ 8)   Lines:  79.82% ( 91/114)
+Model_products
+  Methods:  57.14% ( 4/ 7)   Lines:  60.00% ( 15/ 25)
+Orders
+  Methods:  22.22% ( 2/ 9)   Lines:  25.83% ( 39/151)
+Products
+  Methods:  14.29% ( 1/ 7)   Lines:  34.44% ( 52/151)
