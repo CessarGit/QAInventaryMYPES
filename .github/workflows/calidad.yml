@@ -107,6 +107,7 @@ jobs:
           php-version: '7.4'
           extensions: mysqli, pdo_mysql
           coverage: pcov
+          ini-values: pcov.directory=${{ github.workspace }}/application
           tools: composer
 
       - name: Instalar dependencias
