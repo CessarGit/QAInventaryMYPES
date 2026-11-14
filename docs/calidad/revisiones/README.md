@@ -31,7 +31,7 @@ Comparación autor / Claude: de los 50 hallazgos, 44 los encontraron ambos, 1 so
 | Indicador | Fórmula | Valor | Meta | Estado |
 |---|---|---|---|---|
 | Cobertura de revisión | Revisiones de riesgo alto realizadas / planificadas | 3 / 4 = **75 %** (falta RV-05, Products) | 100 % antes de ejecutar las pruebas | **No alcanzada** (regla 17) |
-| Cierre de hallazgos mayores | Mayores cerrados y verificados / mayores registrados | 1 / 37 = **2,7 %** (H-RV01-01, corregido en el PR #13). H-RV10-01 y H-RV10-02 están corregidos, pero se verifican con datos reales en el 4.2 | 100 % antes de aceptar el producto | **Abierto** hasta el paso 5 |
+| Cierre de hallazgos mayores | Mayores cerrados y verificados / mayores registrados | 3 / 37 = **8,1 %** (H-RV01-01, corregido en el PR #13; H-RV10-01 y H-RV10-02, corregidos y verificados en el 4.1 y el 4.2) | 100 % antes de aceptar el producto | **Abierto** hasta el paso 5 |
 | Eficacia de eliminación de defectos | E / (E + D) | No calculable: D (defectos después de liberar) aún no existe | Al menos 85 % | Se calcula en el paso 8 |
 | Esfuerzo por revisión formal | Ep + Ea | RV-01 **2,15 h** · RV-03 **1,4 h** · RV-04 **0,7 h** · RV-10 **1,4 h** | No más de 10 horas-persona | Alcanzada en las cuatro |
 | Densidad de error | Errtotal / WPS por tipo de producto | Matriz: 233,3 por mil celdas · Código: 8,6 (Orders) y 12,0 (Users, Groups y autenticación) por mil líneas · Scripts: 23,9 por mil líneas | Línea base con las tres primeras revisiones | **Línea base establecida** (RV-10 se compara con ella, no la modifica) |
@@ -43,7 +43,7 @@ Las densidades se agrupan por tipo de producto, como pide la fórmula: la de la 
 | Destino | Hallazgos | Cantidad |
 |---|---|---|
 | Corregido | H-RV01-01 → PR #13 (Settings del Administrador pasa de CRUD a RU propia, opción A de H-03) | 1 |
-| Corregido antes de integrar, pendiente de verificar en el 4.2 | H-RV10-01 (permisos de los respaldos), H-RV10-02 (falso éxito de la verificación de conteos) | 2 |
+| Corregido antes de integrar y verificado en el 4.2 | H-RV10-01 (permisos de los respaldos), H-RV10-02 (falso éxito de la verificación de conteos; la ruta del fallo de consulta, por simulación) | 2 |
 | Issue existente #4 (H-01) | H-RV01-03, H-RV01-04, H-RV01-05, H-RV01-06, H-RV03-01 | 5 |
 | Issue existente #6 (H-04) | H-RV03-05 | 1 |
 | Issue existente #8 (A-04) | H-RV01-08, H-RV04-09 | 2 |

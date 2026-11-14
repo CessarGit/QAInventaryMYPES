@@ -1,0 +1,44 @@
+== 4.2 Prueba de restauración · 2026-11-14 10:59:24 CST
+== Ejecutada por Claude Code con autorización del autor en el chat (desviación: el manual indica que la ejecuta el autor)
+
+== 1. Respaldo de stock
+Respaldo de 'stock' · inicio: 2026-11-14 10:59:25 CST
+Respaldo de 'stock' · fin:    2026-11-14 10:59:25 CST
+Archivo: backups/stock_20261114_105925.sql.gz (4,0K)
+Suma:    backups/stock_20261114_105925.sql.gz.sha256
+código: 0
+== 2. Restauración en stock_restore
+Verificando la suma sha256...
+Suma correcta.
+Restauración en 'stock_restore' · inicio: 2026-11-14 10:59:25 CST
+Restauración en 'stock_restore' · fin:    2026-11-14 10:59:26 CST
+Siguiente paso: bash scripts/verificar-conteos.sh <base_origen> stock_restore
+
+real	0m1,202s
+user	0m0,319s
+sys	0m0,265s
+código: 0
+== 3. Comparación de conteos (Tabla 20)
+Tabla                   stock stock_restore  ¿Igual?
+---------------- ------------ ------------  -------
+attributes                  0            0  sí
+attribute_value             8            8  sí
+brands                      1            1  sí
+categories                  1            1  sí
+company                     1            1  sí
+groups                      2            2  sí
+orders                      0            0  sí
+orders_item                 0            0  sí
+products                    0            0  sí
+stores                      0            0  sí
+users                       1            1  sí
+user_group                  1            1  sí
+Resultado: las 12 tablas coinciden.
+código: 0
+== 4. Permisos de los respaldos (H-RV10-01)
+total 8
+-rw------- 1 cesar-roque cesar-roque 2072 Nov 14 10:59 stock_20261114_105925.sql.gz
+-rw------- 1 cesar-roque cesar-roque   95 Nov 14 10:59 stock_20261114_105925.sql.gz.sha256
+== 5. Base inexistente (código esperado: 2)
+La base 'no_existe' no existe.
+código: 2
