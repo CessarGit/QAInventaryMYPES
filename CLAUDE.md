@@ -57,6 +57,19 @@ CHANGELOG.md                 formato Keep a Changelog
 16. **Los datos de prueba (PC-0) se derivan de la matriz de roles**, a través del mapeo de permisos de `docs/calidad/revisiones/RV-01-matriz.md`.
 17. **Medición honesta:** si un resultado no alcanza el umbral, se reporta tal cual. No se redondea ni se reinterpreta.
 
+## Reglas de estandarización (desde la iteración 2)
+
+Salen del paso 10 (`docs/ciclo-deming/fase-4/03-paso-10-actuar.md`, reglas E-1 a E-8).
+
+18. **Todo cambio nuevo exige su prueba** (E-1, Tabla 21, mejora 1).
+19. **En cada cierre de iteración se revisan las versiones de las dependencias** (E-2, Tabla 21, mejora 2).
+20. **Un PR sin revisión en pareja completa no se fusiona** (E-3). Claude Code revisa con la lista y el autor aprueba; no es un revisor humano independiente.
+21. **Ninguna revisión de riesgo alto se omite sin una excepción registrada** (E-4).
+22. **Todo hallazgo alto tiene un caso que lo confirma o lo descarta antes de cerrar las pruebas** (E-5).
+23. **Las decisiones que cambian un resultado esperado se toman antes de ejecutar**; si no, se declaran como desviación (E-6).
+24. **Todo simulacro de recuperación anota T0** (E-7).
+25. **La integración continua bloquea si la cobertura baja del umbral** (E-8, Tabla 18).
+
 ## Estado de la iteración (el autor lo actualiza)
 
 - [x] Paso 1 · Preparar entorno (Docker, secretos, GitHub, CI, docs) — pendiente: demostrar el semáforo rojo

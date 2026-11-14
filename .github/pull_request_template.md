@@ -19,6 +19,11 @@ Cierra #<!-- número de la issue -->
 
 - [ ] Caso de prueba enlazado (CP-xx y su requisito) — Tabla 17, punto 6; L1, pregunta 10
 - [ ] Lista L1 revisada (10 preguntas) — autorrevisión que sustituye la revisión por pares (desviación de la Figura 1)
+- [ ] Revisión en pareja completa antes de fusionar — regla 20 (E-3)
+- [ ] El cambio trae su prueba — regla 18 (E-1)
+- [ ] Si toca un hallazgo alto, tiene el caso que lo confirma o lo descarta — regla 22 (E-5)
+- [ ] Ningún resultado esperado se cambió después de ejecutar (o se declara la desviación) — regla 23 (E-6)
+- [ ] La cobertura no baja del umbral — regla 25 (E-8)
 - [ ] Pruebas de regresión ejecutadas, sin casos que pasaban y ahora fallan — Figura 1 y Tabla 13 de mantenimiento
 - [ ] CHANGELOG.md actualizado — Tabla 17, punto 8; Tabla 12 de mantenimiento
 - [ ] Pipeline en verde (o ámbar con el riesgo registrado y aprobado) — Tabla 18
