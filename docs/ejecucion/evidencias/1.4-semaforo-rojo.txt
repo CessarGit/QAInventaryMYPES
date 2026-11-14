@@ -1,0 +1,6 @@
+# Semáforo rojo (Tabla 18) · 2026-11-14 12:25 CST
+PR #33 (cerrado sin fusionar): error de sintaxis intencional en application/controllers/Semaforo_rojo.php
+Checks: sintaxis = fail; pruebas = pass
+Estado de fusión: BLOCKED (checks obligatorios de main)
+Error: PHP Parse error: syntax error, unexpected ';' in application/controllers/Semaforo_rojo.php on line 3
+URL: https://github.com/CessarGit/QAInventaryMYPES/pull/33
