@@ -3,16 +3,13 @@
 #   Verde  = los jobs "sintaxis" y "pruebas" pasan        → el cambio se integra.
 #   Rojo   = algún job falla (o hay un defecto crítico)   → se bloquea la integración
 #            hasta corregirlo (checks obligatorios en la protección de main).
-#   Ámbar  = pruebas en verde con advertencias del análisis estático o cobertura bajo
-#            el umbral → PENDIENTE: aún no hay análisis estático ni suite con cobertura.
-#            Cuando existan, se integra solo con aprobación del responsable y el riesgo
-#            registrado.
+#   Ámbar  = pruebas en verde con casos excluidos por defecto abierto
+#            (--exclude-group defecto-abierto, decisión D-06) o cobertura bajo el umbral
+#            → se integra solo con aprobación del responsable y el riesgo registrado.
 #
 # Umbral de cobertura: al menos 60 % en Orders y Products (Tabla 13 de PHVA y
-# Tabla 19); se activará cuando exista la suite (paso 5). La cobertura se mide con pcov.
-#
-# Nota para el paso 5: composer.lock fija PHPUnit 11.5.2, que exige PHP >= 8.2;
-# en PHP 7.4 (Tabla 2) habrá que usar PHPUnit 9.6 antes de crear phpunit.xml.
+# Tabla 19), medida con pcov y publicada en el resumen del job.
+# PHPUnit 9.6 con ci-phpunit-test 3 (PHP 7.4, Tabla 2); datos: stock.sql + PC-0.
 
 name: calidad
 
@@ -116,6 +113,17 @@ jobs:
         if: steps.suite.outputs.existe == 'true'
         run: composer install --no-interaction --no-progress --prefer-dist
 
-      - name: Ejecutar PHPUnit
+      - name: Cargar stock.sql y PC-0 en stock_test
         if: steps.suite.outputs.existe == 'true'
-        run: vendor/bin/phpunit -c application/tests/phpunit.xml
+        run: |
+          mysql -h 127.0.0.1 -uroot -pci-root stock_test < stock.sql
+          hash=$(php -r 'echo password_hash("ci-prueba-desechable", PASSWORD_DEFAULT);')
+          { printf "SET @pc0_hash = '%s';\n" "$hash"; cat application/tests/_datos/pc0.sql; } \
+            | mysql -h 127.0.0.1 -uroot -pci-root stock_test
+
+      - name: Ejecutar PHPUnit (D-06 excluye defecto-abierto)
+        if: steps.suite.outputs.existe == 'true'
+        working-directory: application/tests
+        run: |
+          ../../vendor/bin/phpunit --exclude-group defecto-abierto --coverage-text | tee salida.txt
+          { echo "### Pruebas (PHPUnit 9.6, stock_test)"; echo '```'; tail -20 salida.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
