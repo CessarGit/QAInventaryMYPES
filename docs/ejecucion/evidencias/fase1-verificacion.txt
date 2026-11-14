@@ -1,0 +1,147 @@
+== Etiquetas y ramas ==
+linea-base
+v1
+  chore/ci-semaforo
+  chore/fase1-planificar
+* docs/bitacora-fase1
+  docs/estructura-documentacion
+  docs/fuente-informe-2
+  docs/plan-pruebas
+  docs/topdown-plan
+  docs/trazabilidad
+  main
+  master
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/chore/fase1-planificar
+  remotes/origin/dependabot/composer/phpunit/phpunit-13.4.6
+  remotes/origin/docs/plan-pruebas
+  remotes/origin/main
+  remotes/origin/respaldo/main-2026-11-13
+== Historial de main ==
+* fc5f3c1 docs(calidad): agrega confirmación de hallazgos top-down h-01 a h-06 (#9)
+* 1ea142d docs: agrega índice, matriz de roles, diagrama de despliegue y changelog (#3)
+* f9a93de ci(github): agrega workflow de calidad con jobs de sintaxis y pruebas (#2)
+* 8c9bb46 chore(github): agrega plantillas de issues y pr, y script de etiquetas
+* 3255d55 chore(config): lee credenciales, clave y url base desde variables de entorno
+* 820dc94 docs(calidad): agrega extracto del capítulo de mantenimiento a la fuente
+* 0ef5d0d chore(docker): agrega entorno de staging con php 7.4.33, mysql 5.7.44 y pcov
+* bef9e17 chore: elimina archivos heredados del proyecto original
+* 84d55c4 Agregar los documentos de gestión de calidad
+*   e28ec14 Merge pull request #61 from ronknight/dependabot/composer/phpunit/phpunit-11.5.2
+|\  
+| * c68eda2 Bump phpunit/phpunit from 11.4.4 to 11.5.2
+|/  
+* 2db4339 Update README.md
+*   3b469f3 Merge pull request #59 from ronknight/dependabot/composer/phpunit/phpunit-11.4.4
+|\  
+| * 8965d2e Bump phpunit/phpunit from 11.4.3 to 11.4.4
+|/  
+*   8c758a6 Merge pull request #57 from ronknight/alert-autofix-12
+|\  
+| * ba22c06 Fix code scanning alert no. 12: Useless regular-expression character escape
+|/  
+*   160b5aa Merge pull request #56 from ronknight/alert-autofix-13
+|\  
+| * ab9dfb7 Fix code scanning alert no. 13: Useless regular-expression character escape
+|/  
+*   5c8a022 Merge pull request #55 from ronknight/alert-autofix-14
+|\  
+| * 82dcb5b Fix code scanning alert no. 14: Useless regular-expression character escape
+* |   52bceaa Merge pull request #42 from slaweallx/patch-1
+|\ \  
+| * | a5d2981 Create calendar_lang.php
+* | |   772679c Merge pull request #47 from slaweallx/patch-6
+|\ \ \  
+| * | | f14b17e Create ftp_lang.php
+| |/ /  
+* | |   b6e8633 Merge pull request #43 from slaweallx/patch-2
+|\ \ \  
+| * | | 10c649c Create date_lang.php
+| |/ /  
+* | |   8389898 Merge pull request #44 from slaweallx/patch-3
+|\ \ \  
+| * | | 2dc62c7 Create db_lang.php
+| |/ /  
+* | |   7094e54 Merge pull request #45 from slaweallx/patch-4
+|\ \ \  
+| * | | 0eb2b43 Create email_lang.php
+| |/ /  
+== Línea base ==
+e28ec14 Tue Mar 3 14:21:33 2026 -0800 Merge pull request #61 from ronknight/dependabot/composer/phpunit/phpunit-11.5.2
+== Archivos versionados de la fase ==
+.claude/commands/auditar.md
+.claude/commands/bitacora.md
+.claude/settings.json
+.github/ISSUE_TEMPLATE/config.yml
+.github/ISSUE_TEMPLATE/defecto.yml
+.github/ISSUE_TEMPLATE/mantenimiento.yml
+.github/dependabot.yml
+.github/pull_request_template.md
+.github/workflows/calidad.yml
+CHANGELOG.md
+CLAUDE.md
+docs/README.md
+docs/arquitectura/despliegue.md
+docs/calidad/fuente-informe-2.md
+docs/calidad/fuente-informe.md
+docs/calidad/hallazgos-topdown.md
+docs/calidad/matriz-roles.md
+docs/calidad/trazabilidad.md
+docs/ejecucion/bitacora.md
+docs/ejecucion/evidencias/.gitkeep
+docs/ejecucion/plantilla-paso.md
+scripts/crear-etiquetas.sh
+scripts/generar-env.sh
+== Secretos ==
+.env
+OK: .env no versionado
+OK: sin credenciales literales en database.php
+== Entorno ==
+failed to read /home/cesar-roque/Gestion de Calidad de Software/TS/Proyecto/InventorySystem/.env: line 31: unexpected character "\"" in variable name "echo \"ENCRYPTION_KEY=$(openssl rand -hex 16)\" >> .env"
+failed to read /home/cesar-roque/Gestion de Calidad de Software/TS/Proyecto/InventorySystem/.env: line 31: unexpected character "\"" in variable name "echo \"ENCRYPTION_KEY=$(openssl rand -hex 16)\" >> .env"
+failed to read /home/cesar-roque/Gestion de Calidad de Software/TS/Proyecto/InventorySystem/.env: line 31: unexpected character "\"" in variable name "echo \"ENCRYPTION_KEY=$(openssl rand -hex 16)\" >> .env"
+failed to read /home/cesar-roque/Gestion de Calidad de Software/TS/Proyecto/InventorySystem/.env: line 31: unexpected character "\"" in variable name "echo \"ENCRYPTION_KEY=$(openssl rand -hex 16)\" >> .env"
+== GitHub ==
+accessibility	Barrier affecting people with disabilities	#f143ab
+bug	Something isn't working	#d73a4a
+documentation	Improvements or additions to documentation	#0075ca
+duplicate	This issue or pull request already exists	#cfd3d7
+enhancement	New feature or request	#a2eeef
+good first issue	Good for newcomers	#7057ff
+help wanted	Extra attention is needed	#008672
+invalid	This doesn't seem right	#e4e669
+question	Further information is requested	#d876e3
+wontfix	This will not be worked on	#ffffff
+tipo:correctivo	Corrige un defecto detectado (Tabla 11 de mantenimiento)	#d73a4a
+tipo:adaptativo	Adapta al entorno: framework, PHP, MySQL (Tabla 11 de mantenimiento)	#0e8a16
+tipo:perfectivo	Mejora o amplía; fuera del alcance de la iteración 1 (Tabla 11 de mantenimiento)	#1d76db
+sev:critica	Bloquea la integración; corregir en máximo una iteración (Tablas 18 y 19)	#b60205
+tipo:preventivo	Reduce riesgo futuro o deuda técnica (Tabla 11 de mantenimiento)	#fbca04
+sev:alta	Detiene la liberación (Tabla 9 de pruebas)	#e99695
+sev:media	Se registra con un plan de corrección (Tabla 9 de pruebas)	#f9d0c4
+sev:baja	Se registra con un plan de corrección (Tabla 9 de pruebas)	#fef2c0
+dependencies	Pull requests that update a dependency file	#0366d6
+php	Pull requests that update php code	#45229e
+completed	success	docs(calidad): agrega plan de pruebas de la iteración 1	calidad	docs/plan-pruebas	pull_request	43552396166	32s	2026-11-14T03:35:11Z
+completed	success	docs(calidad): agrega plan de pruebas de la iteración 1	calidad	docs/plan-pruebas	push	43552304884	34s	2026-11-14T03:34:08Z
+completed	success	docs(calidad): agrega segunda parte de la fuente de diseño (#11)	calidad	main	push	43550323490	37s	2026-11-14T03:11:33Z
+completed	success	docs(calidad): agrega segunda parte de la fuente de diseño	calidad	docs/fuente-informe-2	pull_request	43549863716	36s	2026-11-14T03:06:24Z
+completed	success	docs(calidad): agrega segunda parte de la fuente de diseño	calidad	docs/fuente-informe-2	push	43549789249	33s	2026-11-14T03:05:33Z
+completed	success	docs(calidad): agrega trazabilidad unificada rq-01 a rq-06 con cp-01 …	calidad	main	push	43549767671	38s	2026-11-14T03:05:19Z
+completed	success	docs(calidad): agrega trazabilidad unificada rq-01 a rq-06 con cp-01 a cp-14	calidad	docs/trazabilidad	pull_request	43548327421	30s	2026-11-14T02:48:44Z
+completed	success	docs(calidad): agrega trazabilidad unificada rq-01 a rq-06 con cp-01 …	calidad	docs/trazabilidad	push	43548299051	32s	2026-11-14T02:48:24Z
+completed	success	docs(calidad): agrega confirmación de hallazgos top-down h-01 a h-06 …	calidad	main	push	43548043009	41s	2026-11-14T02:45:30Z
+completed	success	docs(calidad): agrega confirmación de hallazgos top-down h-01 a h-06	calidad	docs/topdown-plan	pull_request	43547443354	33s	2026-11-14T02:38:40Z
+completed	success	docs(calidad): agrega confirmación de hallazgos top-down h-01 a h-06	calidad	docs/topdown-plan	push	43547416009	37s	2026-11-14T02:38:21Z
+completed	success	docs: agrega índice, matriz de roles, diagrama de despliegue y change…	calidad	main	push	43547002046	35s	2026-11-14T02:33:50Z
+completed	success	docs: agrega índice, matriz de roles, diagrama de despliegue y changelog	calidad	docs/estructura-documentacion	pull_request	43546075126	36s	2026-11-14T02:23:55Z
+completed	success	docs: agrega índice, matriz de roles, diagrama de despliegue y changelog	calidad	docs/estructura-documentacion	push	43546047781	34s	2026-11-14T02:23:38Z
+completed	success	ci(github): agrega workflow de calidad con jobs de sintaxis y pruebas…	calidad	main	push	43545316363	32s	2026-11-14T02:15:59Z
+12	docs(calidad): agrega plan de pruebas de la iteración 1	docs/plan-pruebas	OPEN	2026-11-14T03:35:07Z
+11	docs(calidad): agrega segunda parte de la fuente de diseño	docs/fuente-informe-2	MERGED	2026-11-14T03:06:21Z
+10	docs(calidad): agrega trazabilidad unificada rq-01 a rq-06 con cp-01 a cp-14	docs/trazabilidad	MERGED	2026-11-14T02:48:40Z
+9	docs(calidad): agrega confirmación de hallazgos top-down h-01 a h-06	docs/topdown-plan	MERGED	2026-11-14T02:38:37Z
+3	docs: agrega índice, matriz de roles, diagrama de despliegue y changelog	docs/estructura-documentacion	MERGED	2026-11-14T02:23:52Z
+2	ci(github): agrega workflow de calidad con jobs de sintaxis y pruebas	chore/ci-semaforo	MERGED	2026-11-14T02:11:11Z
+1	Bump phpunit/phpunit from 11.5.2 to 13.4.6	dependabot/composer/phpunit/phpunit-13.4.6	OPEN	2026-11-14T02:00:57Z
+{"checks":[{"app_id":15368,"context":"sintaxis"},{"app_id":15368,"context":"pruebas"}],"contexts":["sintaxis","pruebas"],"contexts_url":"https://api.github.com/repos/CessarGit/QAInventaryMYPES/branches/main/protection/required_status_checks/contexts","strict":true,"url":"https://api.github.com/repos/CessarGit/QAInventaryMYPES/branches/main/protection/required_status_checks"}

@@ -1,0 +1,14 @@
+# Evidencia 2.1 · Issues de los hallazgos Top-Down
+# Comando: gh issue view <n> --json number,title,state,labels,createdAt,url (n = 4 a 8)
+# Generada el 14/11/2026 desde GitHub (CessarGit/QAInventaryMYPES). Las issues se crearon en el subpaso 2.1.
+
+#4	OPEN	2026-11-14T02:36:44Z	[tipo:preventivo, sev:media]	[Mantenimiento] H-01: centralizar la validación de sesión y permisos
+	https://github.com/CessarGit/QAInventaryMYPES/issues/4
+#5	OPEN	2026-11-14T02:36:46Z	[tipo:preventivo, sev:baja]	[Mantenimiento] H-02: documentar la relación entre Settings y Profile
+	https://github.com/CessarGit/QAInventaryMYPES/issues/5
+#6	OPEN	2026-11-14T02:36:48Z	[tipo:correctivo, tipo:preventivo, sev:alta]	[Mantenimiento] H-04: descuento de stock sin transacción ni comprobación de stock
+	https://github.com/CessarGit/QAInventaryMYPES/issues/6
+#7	OPEN	2026-11-14T02:36:51Z	[tipo:perfectivo, sev:baja]	[Mantenimiento] H-05: no existe catálogo de clientes
+	https://github.com/CessarGit/QAInventaryMYPES/issues/7
+#8	OPEN	2026-11-14T02:36:54Z	[tipo:preventivo, sev:baja]	[Mantenimiento] A-04: acceso de administrador del dashboard fijado a user_id == 1
+	https://github.com/CessarGit/QAInventaryMYPES/issues/8

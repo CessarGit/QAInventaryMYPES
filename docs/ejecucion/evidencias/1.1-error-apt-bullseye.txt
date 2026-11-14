@@ -1,0 +1,58 @@
+# Evidencia 1.1 · Error de apt en Debian bullseye
+# Comando: docker compose up -d --build
+# Fecha: 13/11/2026, 20:07 (America/Lima). Salida pegada por el autor en la sesión de trabajo,
+# copiada sin cambios del historial de la sesión el 14/11/2026.
+# Causa: Debian bullseye ya no tiene soporte y sus paquetes de seguridad se retiraron de deb.debian.org.
+# Corrección: el Dockerfile apunta a archive.debian.org (commit 0ef5d0d).
+
+=> ERROR [stage-0 2/8] RUN apt-get update     && apt-get install -y --no-install-recommends unzip git     &&   5.7s
+------
+ > [stage-0 2/8] RUN apt-get update     && apt-get install -y --no-install-recommends unzip git     && rm -rf /var/lib/apt/lists/*:
+1.055 Get:1 http://deb.debian.org/debian bullseye InRelease [75.1 kB]
+1.125 Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [27.1 kB]
+1.162 Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.0 kB]
+1.371 Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8066 kB]
+1.716 Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [475 kB]
+1.762 Get:6 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [18.8 kB]
+2.839 Fetched 8706 kB in 2s (4573 kB/s)
+2.839 Reading package lists...
+3.565 Reading package lists...
+4.178 Building dependency tree...
+4.345 Reading state information...
+4.569 The following additional packages will be installed:
+4.570   git-man libcurl3-gnutls liberror-perl
+4.572 Suggested packages:
+4.572   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
+4.572   git-gui gitk gitweb git-cvs git-mediawiki git-svn zip
+4.572 Recommended packages:
+4.572   less ssh-client
+4.616 The following NEW packages will be installed:
+4.617   git git-man libcurl3-gnutls liberror-perl unzip
+4.918 0 upgraded, 5 newly installed, 0 to remove and 78 not upgraded.
+4.918 Need to get 7946 kB of archives.
+4.918 After this operation, 39.3 MB of additional disk space will be used.
+4.918 Err:1 http://deb.debian.org/debian-security bullseye-security/main amd64 libcurl3-gnutls amd64 7.74.0-1.3+deb11u16
+4.918   404  Not Found [IP: 199.232.94.132 80]
+4.954 Get:2 http://deb.debian.org/debian bullseye/main amd64 liberror-perl all 0.17029-1 [31.0 kB]
+5.098 Err:3 http://deb.debian.org/debian-security bullseye-security/main amd64 git-man all 1:2.30.2-1+deb11u5
+5.098   404  Not Found [IP: 199.232.94.132 80]
+5.430 Err:4 http://deb.debian.org/debian-security bullseye-security/main amd64 git amd64 1:2.30.2-1+deb11u5
+5.430   404  Not Found [IP: 199.232.94.132 80]
+5.466 Err:5 http://deb.debian.org/debian-security bullseye-security/main amd64 unzip amd64 6.0-26+deb11u2
+5.466   404  Not Found [IP: 199.232.94.132 80]
+5.479 E: Failed to fetch http://deb.debian.org/debian-security/pool/updates/main/c/curl/libcurl3-gnutls_7.74.0-1.3%2bdeb11u16_amd64.deb  404  Not Found [IP: 199.232.94.132 80]
+5.479 E: Failed to fetch http://deb.debian.org/debian-security/pool/updates/main/g/git/git-man_2.30.2-1%2bdeb11u5_all.deb  404  Not Found [IP: 199.232.94.132 80]
+5.479 E: Failed to fetch http://deb.debian.org/debian-security/pool/updates/main/g/git/git_2.30.2-1%2bdeb11u5_amd64.deb  404  Not Found [IP: 199.232.94.132 80]
+5.479 E: Failed to fetch http://deb.debian.org/debian-security/pool/updates/main/u/unzip/unzip_6.0-26%2bdeb11u2_amd64.deb  404  Not Found [IP: 199.232.94.132 80]
+5.479 E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+5.479 Fetched 31.0 kB in 1s (36.9 kB/s)
+------
+Dockerfile:11
+--------------------
+  10 |     # Herramientas que Composer necesita para descargar paquetes.
+  11 | >>> RUN apt-get update \
+  12 | >>>     && apt-get install -y --no-install-recommends unzip git \
+  13 | >>>     && rm -rf /var/lib/apt/lists/*
+  14 |     
+--------------------
+failed to solve: process "/bin/sh -c apt-get update     && apt-get install -y --no-install-recommends unzip git     && rm -rf /var/lib/apt/lists/*" did not complete successfully: exit code: 100
