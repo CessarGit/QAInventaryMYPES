@@ -54,6 +54,9 @@ class Model_orders extends CI_Model
     		'user_id' => $user_id
     	);
 
+		// La venta, sus líneas y el descuento de stock van en una sola transacción (#35)
+		$this->db->trans_begin();
+
 		$insert = $this->db->insert('orders', $data);
 		$order_id = $this->db->insert_id();
 
@@ -61,6 +64,13 @@ class Model_orders extends CI_Model
 
 		$count_product = count($this->input->post('product'));
     	for($x = 0; $x < $count_product; $x++) {
+    		// Si el stock no alcanza, se cancela toda la venta (#35)
+    		$product_data = $this->model_products->getProductData($this->input->post('product')[$x]);
+    		if(!$product_data || (int) $this->input->post('qty')[$x] > (int) $product_data['qty']) {
+    			$this->db->trans_rollback();
+    			return false;
+    		}
+
     		$items = array(
     			'order_id' => $order_id,
     			'product_id' => $this->input->post('product')[$x],
@@ -72,7 +82,6 @@ class Model_orders extends CI_Model
     		$this->db->insert('orders_item', $items);
 
     		// now decrease the stock FROM `the` product
-    		$product_data = $this->model_products->getProductData($this->input->post('product')[$x]);
     		$qty = (int) $product_data['qty'] - (int) $this->input->post('qty')[$x];
 
     		$update_product = array('qty' => $qty);
@@ -81,7 +90,13 @@ class Model_orders extends CI_Model
     		$this->model_products->update($update_product, $this->input->post('product')[$x]);
     	}
 
-		return ($order_id) ? $order_id : false;
+		if($this->db->trans_status() === FALSE || !$order_id) {
+			$this->db->trans_rollback();
+			return false;
+		}
+		$this->db->trans_commit();
+
+		return $order_id;
 	}
 
 	public function countOrderItem($order_id)

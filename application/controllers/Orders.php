@@ -99,7 +99,7 @@ class Orders extends Admin_Controller
 		$this->data['page_title'] = 'Add Order';
 
 		$this->form_validation->set_rules('product[]', 'Product name', 'trim|required');
-		
+		$this->form_validation->set_rules('qty[]', 'Quantity', 'trim|required|is_natural_no_zero');
 	
         if ($this->form_validation->run() == TRUE) {        	
         	
@@ -170,7 +170,7 @@ class Orders extends Admin_Controller
 		$this->data['page_title'] = 'Update Order';
 
 		$this->form_validation->set_rules('product[]', 'Product name', 'trim|required');
-		
+		$this->form_validation->set_rules('qty[]', 'Quantity', 'trim|required|is_natural_no_zero');
 	
         if ($this->form_validation->run() == TRUE) {        	
         	

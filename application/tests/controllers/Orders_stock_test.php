@@ -24,9 +24,7 @@ class Orders_stock_test extends Pc0TestCase
 	/**
 	 * CP-02 · Vender una cantidad mayor que el stock (N + 1 = 6).
 	 * Esperado: rechazo; el stock no cambia.
-	 *
-	 * @group defecto-abierto
-	 * Defecto abierto: #35.
+	 * Defecto corregido: #35.
 	 */
 	public function test_CP02_vender_cantidad_mayor_que_el_stock()
 	{
@@ -43,9 +41,7 @@ class Orders_stock_test extends Pc0TestCase
 	 * Esperado: rechazo por validación en ambos casos.
 	 *
 	 * @dataProvider cantidadesNoValidas
-	 *
-	 * @group defecto-abierto
-	 * Defecto abierto: #36.
+	 * Defecto corregido: #36.
 	 */
 	public function test_CP03_cantidad_cero_o_negativa($cantidad)
 	{
