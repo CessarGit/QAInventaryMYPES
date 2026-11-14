@@ -22,11 +22,31 @@ Resultado: **Pasa** (coincide con el esperado), **Falla** (no coincide; genera u
 | 2026-11-14 12:32 CST | CP-16 | 7cd3841 + test/grupo-a-stock | 3.1.6 | staging Docker | Pasa | Redirección sin sesión en las 4 URL | PHPUnit, Permisos_test |  |
 | 2026-11-14 12:32 CST | CP-19 | 7cd3841 + test/grupo-a-stock | 3.1.6 | staging Docker | Pasa | Venta registrada; stock 4 | PHPUnit, Orders_stock_test |  |
 | 2026-11-14 12:32 CST | CP-20 | 7cd3841 + test/grupo-a-stock | 3.1.6 | staging Docker | Pasa | Nombre guardado truncado a 255 | PHPUnit, Productos_reporte_test |  |
+| 2026-11-14 13:09 CST | CP-04 (URL) | eaa15e4 | 3.1.6 | staging Docker | Pasa | Ventas redirigido al escribir orders/remove | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md |  |
+| 2026-11-14 13:09 CST | CP-06 (URL) | eaa15e4 | 3.1.6 | staging Docker | Pasa | Bodega redirigido al escribir orders | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md |  |
+| 2026-11-14 13:09 CST | CP-07 (URL) | eaa15e4 | 3.1.6 | staging Docker | Pasa | Gerente redirigido al escribir users | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md |  |
+| 2026-11-14 13:09 CST | CP-11 | eaa15e4 | 3.1.6 | staging Docker | Pasa | Marca, categoría, producto, venta y reporte sin error; producto visible | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md |  |
+| 2026-11-14 13:09 CST | CP-12 | eaa15e4 | 3.1.6 | staging Docker | Falla | Hoja (neto) 49,2; reporte +0 sin marcar pagadas y +40 (bruto) marcadas como pagadas | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md | #37 |
+| 2026-11-14 13:09 CST | CP-17 | eaa15e4 | 3.1.6 | staging Docker | Falla | Script sin escapar en listado de productos y de ventas (JSON), edición y factura | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md | #41 |
+| 2026-11-14 13:09 CST | CP-18 | eaa15e4 | 3.1.6 | staging Docker | Falla | MARCA-CSRF creada sin token | HTTP (curl) contra staging; 5.4-pruebas-manuales/guion.md | #40 |
 
 ## Resumen por ronda
 
 | Ronda | Fecha | Commit | Ejecutados / diseñados | Pasan | Fallan | Bloqueados | Cobertura Orders | Cobertura Products |
 |---|---|---|---|---|---|---|---|---|
-| 1 · línea base 3.1.6 | | | / 20 | | | | % | % |
+| 1 · línea base 3.1.6 | 2026-11-14 | eaa15e4 | 20 / 20 = 100 % | 12 | 8 | 0 | 47,43 % (120/253) | 38,07 % (67/176) |
 | 2 · tras correcciones | | | / 20 | | | | % | % |
 | 3 · CodeIgniter 3.1.13 | | | / 20 | | | | % | % |
+
+### Ronda 1: comparación y defectos abiertos
+
+- Pasan: CP-01, 04, 05, 06, 07, 10, 11, 13, 14, 16, 19, 20. Fallan: CP-02, 03, 08, 09, 12, 15, 17, 18. PHPUnit: 29 pruebas, 22 pasan, 7 fallan; cobertura total 43,59 % (187/429). Por clase: Orders 23,81 %, Model_orders 80,19 %, Products 34,44 %, Model_products 60,00 %.
+- Tabla 13 de PHVA: casos ejecutados 100 % (umbral ≥ 90 %, **alcanzado**); cobertura de Orders 47,43 % y de Products 38,07 % (umbral ≥ 60 %, **no alcanzado**); defectos críticos abiertos 1 (umbral 0, **no alcanzado**).
+- Tabla 19 de revisiones: cierre de hallazgos mayores sin cambio, 3 / 37 = 8,1 %.
+
+| Severidad | Issues |
+|---|---|
+| Crítica | #34 (CP-15) |
+| Alta | #35 (CP-02), #36 (CP-03), #37 (CP-09, CP-12), #40 (CP-18), #41 (CP-17) |
+| Media | #38 (CP-08), #42 (fijación de sesión), #43 (avisos de PHP) |
+| Baja | #44 (contraseña visible) |
