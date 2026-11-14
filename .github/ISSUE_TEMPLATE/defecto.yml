@@ -1,0 +1,124 @@
+# Registro de defectos encontrados al ejecutar un caso de prueba.
+# Respaldo: Tabla 11 de mantenimiento (categoría correctivo), Figura 1 de
+# mantenimiento (issue → clasificación por categoría y severidad), Tabla 13
+# de mantenimiento (defectos por mes, tiempo de resolución por severidad) y
+# Tabla 17, puntos 6 y 7 (casos con resultados; defectos con severidad,
+# responsable y cierre).
+name: Defecto
+description: Registrar un defecto detectado al ejecutar un caso de prueba (CP-xx).
+title: "[Defecto] CP-xx: "
+labels: ["tipo:correctivo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Antes de enviar:** asigna un responsable (*Assignees*) y aplica la etiqueta
+        `sev:*` que corresponda a la severidad elegida. El defecto se cierra desde el
+        pull request que lo corrige (`Closes #nn`). Tabla 17, punto 7.
+
+  - type: input
+    id: caso
+    attributes:
+      label: Caso de prueba
+      description: Identificador del caso ejecutado (Tabla 8 de pruebas o plan de pruebas vigente).
+      placeholder: CP-04
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: Módulo
+      description: Módulos de la matriz de roles (Tabla 5).
+      options:
+        - Users
+        - Groups
+        - Settings
+        - Brands
+        - Categories
+        - Attributes
+        - Stores
+        - Products
+        - Orders
+        - Reports
+        - Company
+        - Profile
+        - Varios
+    validations:
+      required: true
+
+  - type: dropdown
+    id: rol
+    attributes:
+      label: Rol con el que se ejecutó
+      options:
+        - Gerente
+        - Ventas
+        - Bodega
+        - Logística
+        - Administrador
+        - No aplica
+    validations:
+      required: true
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos
+      description: Pasos numerados y datos de entrada usados.
+      placeholder: |
+        1. Iniciar sesión como Ventas.
+        2. Abrir Orders y elegir una venta.
+        3. Pulsar Eliminar.
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+      description: Sale de la matriz de roles (Tabla 5) o del requisito, nunca del código.
+    validations:
+      required: true
+
+  - type: textarea
+    id: obtenido
+    attributes:
+      label: Resultado obtenido
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: Severidad
+      description: |
+        crítica: bloquea la integración (semáforo rojo, Tabla 18), detiene la liberación
+        (Tabla 9 de pruebas) y se corrige en máximo una iteración (Tabla 19).
+        alta: detiene la liberación (Tabla 9 de pruebas).
+        media / baja: queda registrado con un plan de corrección (Tabla 9 de pruebas).
+      options:
+        - crítica
+        - alta
+        - media
+        - baja
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidencia
+      description: Capturas, salida de consultas SQL, registros o ruta en docs/ejecucion/evidencias/.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verificaciones
+    attributes:
+      label: Verificaciones
+      options:
+        - label: El resultado esperado se tomó de la matriz de roles o del requisito, no del código.
+          required: true
+        - label: La evidencia no contiene contraseñas ni datos reales.
+          required: true
