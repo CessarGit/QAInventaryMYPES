@@ -30,7 +30,7 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Nivel | Unitaria |
 | Técnica | Valor límite |
 | Precondiciones | PC-0; un producto con stock N |
-| Datos | Cantidad vendida = N. Valor de N: POR DEFINIR |
+| Datos | Cantidad vendida = N. Valor de N: 5 (D-01) |
 | Pasos | 1. Registrar una venta del producto por N unidades. 2. Consultar el stock del producto. |
 | Resultado esperado | Venta registrada y stock en 0 |
 | Evidencia prevista | Salida de PHPUnit; consulta SQL del stock antes y después |
@@ -45,7 +45,7 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Nivel | Unitaria |
 | Técnica | Valor límite |
 | Precondiciones | PC-0; un producto con stock N |
-| Datos | Cantidad vendida = N + 1. Valor de N: POR DEFINIR |
+| Datos | Cantidad vendida = N + 1. Valor de N: 5, se venden 6 (D-01) |
 | Pasos | 1. Intentar registrar una venta del producto por N + 1 unidades. 2. Consultar el stock del producto. |
 | Resultado esperado | Rechazo; el stock no cambia |
 | Evidencia prevista | Salida de PHPUnit; consulta SQL del stock antes y después |
@@ -131,7 +131,7 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Nivel | Unitaria |
 | Técnica | Caja negra |
 | Precondiciones | PC-0 |
-| Datos | Formulario de alta con los campos obligatorios vacíos. Lista de campos obligatorios: POR DEFINIR (los requisitos no la enumeran) |
+| Datos | Formulario de alta con los campos obligatorios vacíos. Campos obligatorios: nombre, SKU, precio, cantidad, marca, categoría y tienda (D-02) |
 | Pasos | 1. Intentar dar de alta un producto dejando vacíos los campos obligatorios. |
 | Resultado esperado | Rechazo con mensaje de validación |
 | Evidencia prevista | Salida de PHPUnit; captura del mensaje |
@@ -145,7 +145,7 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Nivel | Integración |
 | Técnica | Integración |
 | Precondiciones | PC-0; total del reporte del año antes de la venta conocido |
-| Datos | Una venta de importe conocido en el año en curso. Importe que suma el reporte (bruto o neto): POR DEFINIR |
+| Datos | Una venta de importe conocido en el año en curso. Importe que suma el reporte: neto, con cargos e IVA (D-03) |
 | Pasos | 1. Anotar el total anual del reporte. 2. Registrar la venta. 3. Consultar de nuevo el reporte anual. |
 | Resultado esperado | La venta se refleja en los totales del año |
 | Evidencia prevista | Hoja de cálculo comparativa; captura del reporte antes y después |
@@ -218,7 +218,7 @@ Estados: Pendiente (sin ejecutar), Iniciado (en ejecución), Rechazado (el caso 
 | Precondiciones | PC-0; un usuario creado con una contraseña conocida |
 | Datos | Contraseña conocida de prueba (no real) |
 | Pasos | 1. Crear el usuario con la contraseña conocida. 2. Consultar el campo de contraseña en la base de pruebas. |
-| Resultado esperado | Contraseña almacenada con hash, no en texto plano. Algoritmo exigido: POR DEFINIR (RQ-06 solo pide hash; la Tabla 13 de seguridad sugiere un hash adaptativo como recomendación) |
+| Resultado esperado | Contraseña almacenada con hash, no en texto plano. Algoritmo exigido: hash adaptativo, bcrypt o argon2 con `password_hash` (D-04); MD5 o SHA-1 sin sal es falla |
 | Evidencia prevista | Consulta a la base |
 
 ## 3. Cambios respecto al informe
