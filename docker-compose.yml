@@ -42,7 +42,7 @@ services:
       MYSQL_USER: ${DB_USER:?Falta DB_USER en .env}
       MYSQL_PASSWORD: ${DB_PASS:?Falta DB_PASS en .env}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:?Falta DB_ROOT_PASS en .env}
-      TZ: America/Lima
+      TZ: America/El_Salvador
     volumes:
       - db_data:/var/lib/mysql
       # Dump inicial: solo se ejecuta cuando el volumen está vacío.
