@@ -59,9 +59,9 @@ CHANGELOG.md                 formato Keep a Changelog
 
 ## Estado de la iteración (el autor lo actualiza)
 
-- [ ] Paso 1 · Preparar entorno (Docker, secretos, GitHub, CI, docs)
-- [ ] Paso 2 · Top-Down y plan (H-01 a H-06, trazabilidad unificada, plan de pruebas)
-- [ ] Paso 3 · Revisiones (L1 Orders, L2 matriz)
+- [x] Paso 1 · Preparar entorno (Docker, secretos, GitHub, CI, docs) — pendiente: demostrar el semáforo rojo
+- [x] Paso 2 · Top-Down y plan (H-01 a H-06, trazabilidad unificada, plan de pruebas)
+- [x] Paso 3 · Revisiones (L1 Orders, L2 matriz) — pendiente: RV-05 (Products), cobertura de riesgo alto 75 %
 - [ ] Paso 4 · Respaldo y restauración
 - [ ] Paso 5 · Pruebas y seguridad sobre 3.1.6
 - [ ] Paso 6 · Actualizar a CodeIgniter 3.1.13
