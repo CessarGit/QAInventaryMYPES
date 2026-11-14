@@ -18,3 +18,7 @@ application/logs/*
 
 # Secretos del entorno (Tabla 13 de seguridad)
 .env
+
+# Respaldos de la base: nunca se versionan (regla 15; Tabla 11 de recuperación).
+# Se usa backups/* en lugar de backups/ para poder versionar backups/.htaccess en el 4.1.
+backups/*
