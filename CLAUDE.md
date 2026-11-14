@@ -4,7 +4,7 @@
 
 - Aplicación web **ya desarrollada**: CodeIgniter 3.1.6, PHP 7.4.33, MySQL 5.7 (base `stock`, 12 tablas InnoDB), Apache 2.4, monolito MVC con 12 módulos y 5 roles. Staging en Docker.
 - **No se desarrolla funcionalidad nueva** (exclusión del alcance del informe). Se le aplica la gestión de calidad diseñada en el informe *Gestión de la calidad de un sistema web de inventarios y punto de venta para MYPES*, mediante una iteración PHVA de 10 pasos.
-- La referencia de diseño está en `docs/calidad/fuente-informe.md`. Léela antes de proponer cualquier cosa. La **matriz de roles (Tabla 5)** es la única fuente de verdad sobre permisos.
+- La referencia de diseño está en `docs/calidad/fuente-informe.md` y en `docs/calidad/fuente-informe-2.md` (tablas para los pasos 2.3 a 10). Léelas antes de proponer cualquier cosa. La **matriz de roles (Tabla 5)** es la única fuente de verdad sobre permisos.
 - El autor (César Roque) trabaja solo y **audita cada cambio**. Tú produces; él revisa y aprueba.
 
 ## Reglas de trabajo (obligatorias)
