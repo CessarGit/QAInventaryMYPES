@@ -285,7 +285,7 @@ class Users extends Admin_Controller
 			        		'gender' => $this->input->post('gender'),
 			        	);
 
-			        	$update = $this->model_users->edit($data, $id, $this->input->post('groups'));
+			        	$update = $this->model_users->edit($data, $id);
 			        	if($update == true) {
 			        		$this->session->set_flashdata('success', 'Successfully updated');
 			        		redirect('users/setting/', 'refresh');
