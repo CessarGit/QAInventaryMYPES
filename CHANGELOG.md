@@ -15,7 +15,9 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - Workflow de integración continua `calidad.yml` con los jobs `sintaxis` y `pruebas` (semáforo de la Tabla 18) (`f9a93de`).
 - Índice de documentación, matriz de roles (Tabla 5), diagrama de despliegue y este changelog (`1ea142d`).
 - `docs/calidad/hallazgos-topdown.md`: confirmación de H-01 a H-06 en el código y hallazgos adicionales A-01 y A-04 (`fc5f3c1`).
-- `docs/calidad/trazabilidad.md`: trazabilidad unificada RQ-01 a RQ-06 con CP-01 a CP-14, fichas de los casos y nota de renumeración.
+- `docs/calidad/trazabilidad.md`: trazabilidad unificada RQ-01 a RQ-06 con CP-01 a CP-14, fichas de los casos y nota de renumeración (`ced890e`).
+- `docs/calidad/fuente-informe-2.md`: segunda parte de la fuente de diseño (tablas para los pasos 2.3 a 10).
+- `docs/calidad/plan-pruebas-iteracion-1.md`: plan de pruebas de la iteración 1 con la regla de decisión ante retrasos.
 
 ### Cambiado
 
