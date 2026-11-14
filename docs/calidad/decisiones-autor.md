@@ -14,3 +14,5 @@ Decisiones que las fuentes de diseño no fijan y que el autor toma como requisit
 | D-08 | ¿El reporte anual cuenta las ventas no pagadas? | CP-09, CP-12 | (a) Todas las ventas registradas. (b) Solo las marcadas como pagadas (`paid_status = 1`) | **(a) Todas las ventas** | CP-09 registra una venta (que nace no pagada, `application/models/Model_orders.php:52`) y espera verla en el reporte; RQ-03 pide las ventas del año. Tomada en el subpaso 5.6 al corregir #37, después de ejecutar CP-09 y CP-12 (desviación: no fue previa) | 14/11/2026 |
 
 **Firma del autor:** César Roque · fecha: 14/11/2026 (registrada por Claude Code con autorización del autor en el chat)
+
+**Firma del autor (D-08):** César Roque · fecha: 14/11/2026 (registrada por Claude Code con autorización del autor en el chat)

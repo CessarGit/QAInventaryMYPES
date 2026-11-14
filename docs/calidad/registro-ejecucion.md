@@ -59,7 +59,7 @@ Resultado: **Pasa** (coincide con el esperado), **Falla** (no coincide; genera u
 |---|---|---|---|---|---|---|---|---|
 | 1 · línea base 3.1.6 | 2026-11-14 | eaa15e4 | 20 / 20 = 100 % | 12 | 8 | 0 | 47,43 % (120/253) | 38,07 % (67/176) |
 | 2 · tras correcciones | 2026-11-14 | 64df852 | 20 / 20 = 100 % | 19 | 1 | 0 | 49,06 % (130/265) | 38,07 % (67/176) |
-| 3 · CodeIgniter 3.1.13 | | | / 20 | | | | % | % |
+| 3 · CodeIgniter 3.1.13 | — | — | No ejecutada | — | — | — | — | — |
 
 ### Ronda 1: comparación y defectos abiertos
 
@@ -80,4 +80,9 @@ Resultado: **Pasa** (coincide con el esperado), **Falla** (no coincide; genera u
 - Tabla 13 de PHVA: casos ejecutados 100 % (**alcanzado**); defectos críticos abiertos 0 (**alcanzado**); cobertura de Orders 49,06 % y de Products 38,07 % (≥ 60 %, **no alcanzado**).
 - Tabla 19 de revisiones: cierre de hallazgos mayores 8 / 37 = 21,6 %.
 - Abiertos: media #38, #42, #43; baja #44. Quedan para la siguiente iteración (Tabla 9 de pruebas).
+- Token CSRF verificado por el autor en el navegador (entrada, alta, edición y eliminación de marca, venta y `fetch` sin token con 403): exitoso.
 - Línea base de regresión para el paso 6: `docs/ejecucion/evidencias/5.7-suite-base-3.1.6.txt`, etiqueta `pruebas-base-3.1.6`.
+
+### Ronda 3: no ejecutada
+
+El autor difiere el paso 6 (actualizar a CodeIgniter 3.1.13) a la Fase 4 (Actuar) como mejora de la próxima iteración: esta iteración se centra en la calidad. El paso 7 (RB-06) no aplica porque no hay actualización. Seguimiento: issue #52.

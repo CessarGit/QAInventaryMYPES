@@ -18,6 +18,12 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - `docs/calidad/trazabilidad.md`: trazabilidad unificada RQ-01 a RQ-06 con CP-01 a CP-14, fichas de los casos y nota de renumeración (`ced890e`).
 - `docs/calidad/fuente-informe-2.md`: segunda parte de la fuente de diseño (tablas para los pasos 2.3 a 10).
 - `docs/calidad/plan-pruebas-iteracion-1.md`: plan de pruebas de la iteración 1 con la regla de decisión ante retrasos.
+- Revisiones RV-01 (matriz), RV-03 (Orders), RV-04 (usuarios y permisos) y RV-10 (scripts) con sus indicadores (`30c52c1`, `4e2cfc8`).
+- `scripts/respaldo.sh`, `restaurar.sh` y `verificar-conteos.sh`; prueba de restauración y simulacro RB-01 (`f9cf54d`, `b6108e2`).
+- Datos PC-0 y `scripts/preparar-stock-test.sh` para la base `stock_test` (`13fd565`).
+- Decisiones del autor D-01 a D-08 y casos CP-15 a CP-20 (`6a0ced1`, `7d2f44b`, `2003492`, `86c7792`).
+- Suite PHPUnit 9.6 con ci-phpunit-test 3: 29 pruebas de stock, permisos, productos, reporte y contraseñas, ejecutada en la CI con cobertura (`7cd3841`, `3a826a5`, `eaa15e4`).
+- Registro de ejecución: rondas 1 y 2, pruebas manuales 5.4 y línea base de regresión, etiqueta `pruebas-base-3.1.6` (`3b85bdf`, `3a3f1cb`).
 
 ### Cambiado
 
@@ -25,6 +31,9 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - `application/config/config.php` lee `encryption_key` y `base_url` desde variables de entorno (`3255d55`).
 - `composer.json`: nueva descripción del proyecto; se retira el campo `license` (`bef9e17`).
 - `application/views/templates/footer.php`: se retiran la versión y el aviso de copyright del pie de página (`bef9e17`).
+- Matriz de roles: Settings del Administrador pasa a RU propia (`bc92004`).
+- Zona horaria del staging `America/El_Salvador` (`637fba6`).
+- El reporte anual suma el neto de todas las ventas del año, no solo las pagadas (D-03, D-08; #37, `cb0d116`).
 
 ### Eliminado
 
@@ -36,3 +45,8 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - `.env` se agrega a `.gitignore` y `.dockerignore`; las credenciales salen del repositorio (`0ef5d0d`).
 - La `encryption_key`, que era pública en el historial, se rota y pasa a `.env` (`3255d55`).
 - La base de datos de staging no publica puertos y la aplicación solo escucha en `127.0.0.1` (`0ef5d0d`).
+- Settings ya no permite cambiar el propio grupo (#34, `171c0d9`).
+- La venta valida la cantidad y comprueba el stock dentro de una transacción (#35, #36, `d089c48`).
+- Salidas de cliente, empresa y producto escapadas contra XSS (#41, `bfbc8a4`).
+- Protección CSRF activa con token en formularios y AJAX (#40, `64df852`).
+- Respaldos con permisos 600 y fuera del alcance de Apache (`f9cf54d`, `637fba6`).
