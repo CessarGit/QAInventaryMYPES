@@ -13,6 +13,8 @@ El formato se basa en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/
 - Extracto del capítulo de mantenimiento (Tablas 11, 12 y 13 y Figura 1) en `docs/calidad/fuente-informe.md` (`820dc94`).
 - Plantillas de issue `defecto.yml` y `mantenimiento.yml`, `config.yml` que desactiva las issues sin plantilla, plantilla de pull request y `scripts/crear-etiquetas.sh` (`8c9bb46`).
 - Workflow de integración continua `calidad.yml` con los jobs `sintaxis` y `pruebas` (semáforo de la Tabla 18) (`f9a93de`).
+- Índice de documentación, matriz de roles (Tabla 5), diagrama de despliegue y este changelog (`1ea142d`).
+- `docs/calidad/hallazgos-topdown.md`: confirmación de H-01 a H-06 en el código y hallazgos adicionales A-01 y A-04.
 
 ### Cambiado
 
