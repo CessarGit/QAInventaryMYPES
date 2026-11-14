@@ -1,0 +1,11 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CP-18 · Formulario sin token CSRF</title>
+<!-- Servir desde http://127.0.0.1:8081 (mismo sitio que el staging) para que el navegador
+     envíe la cookie de sesión y la prueba mida la protección del servidor, no la del navegador. -->
+<h1>CP-18 · Alta de marca sin token CSRF</h1>
+<form action="http://127.0.0.1/InventorySystem/brands/create" method="POST">
+  <input type="hidden" name="brand_name" value="MARCA-CSRF">
+  <input type="hidden" name="active" value="1">
+  <button type="submit">Enviar</button>
+</form>
