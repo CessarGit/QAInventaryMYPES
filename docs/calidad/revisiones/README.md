@@ -17,7 +17,7 @@ Desviación común: la Tabla 7 de revisiones pide inspección formal con tres pe
 
 | Revisión | Ep (h) | Ea (h) | Er (h) | WPS | Mayores / menores | Densidad de error | Solo autor / solo Claude / ambos |
 |---|---|---|---|---|---|---|---|
-| RV-01 | 1,0 | 1,15 | Pendiente (corrección de la matriz, PR #13) | 60 celdas | 12 / 2 | 14 / 60 × 1000 = 233,3 por mil celdas | 1 / 0 / 13 |
+| RV-01 | 1,0 | 1,15 | 0,2 (corrección de la matriz, PR #13) | 60 celdas | 12 / 2 | 14 / 60 × 1000 = 233,3 por mil celdas | 1 / 0 / 13 |
 | RV-03 | 1,0 | 0,4 | N/A (se mide en el paso 5.6) | 1516 líneas | 10 / 3 | 13 / 1516 × 1000 = 8,6 por mil líneas | 0 / 0 / 13 |
 | RV-04 | 0,3 | 0,4 | N/A (se mide en el paso 5.6) | 1499 líneas | 13 / 5 | 18 / 1499 × 1000 = 12,0 por mil líneas | 0 / 0 / 18 |
 | **Total** | 2,3 | 1,95 | — | — | **35 / 10** | — | **1 / 0 / 44** |

@@ -54,7 +54,7 @@ Criterio de gravedad (Tabla 17): **mayor** si corregirlo toma más de 1 hora-per
 |---|---|
 | Ep: preparación del autor (horas) | 1,0 |
 | Ea: revisión del autor (horas) | 1,15 |
-| Er: corrección (horas, si aplica) | Pendiente del autor: la corrección de la matriz (H-03, opción A) se aplicó en el PR #13 |
+| Er: corrección (horas, si aplica) | 0,2 (corrección de la matriz, H-03 opción A: de la decisión del autor a la fusión del PR #13, 15:19 a 15:30 UTC del 14/11/2026) |
 | WPS: tamaño revisado | 60 celdas de la matriz (12 módulos × 5 roles) |
 | Hallazgos mayores / menores | 12 / 2 |
 | Densidad de error (hallazgos / WPS × 1000) | 14 / 60 × 1000 = 233,3 hallazgos por mil celdas |
