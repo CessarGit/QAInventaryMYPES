@@ -47,7 +47,7 @@ Las densidades se agrupan por tipo de producto, como pide la fórmula: la de la 
 | Issue existente #4 (H-01) | H-RV01-03, H-RV01-04, H-RV01-05, H-RV01-06, H-RV03-01 | 5 |
 | Issue existente #6 (H-04) | H-RV03-05 | 1 |
 | Issue existente #8 (A-04) | H-RV01-08, H-RV04-09 | 2 |
-| Se confirman en el paso 5; si la prueba falla, se registran con la plantilla Defecto (regla 12) | H-RV01-02 y H-RV04-01 (A-01: CP-10, CP-15), H-RV03-02 (CP-02, CP-03), H-RV04-02 y H-RV04-04 (CP-18), H-RV04-03 y H-RV04-07 (guion 5.4) | 7 |
+| Defecto confirmado en el paso 5 (regla 12) | H-RV01-02 y H-RV04-01 → #34; H-RV03-02 → #35 y #36; H-RV04-02 → #40; H-RV04-03 → #42; H-RV04-07 → #44; H-RV04-04 parcial (sin Secure) → #15 | 7 |
 | Issue #14: decisiones pendientes en la matriz | H-RV01-07, H-RV01-11, H-RV01-12 | 3 |
 | Issue #15: requisitos de seguridad sin definir | H-RV01-14, H-RV04-06 | 2 |
 | Issue #16: integridad del stock al editar o eliminar una venta y con ventas simultáneas | H-RV03-06, H-RV03-07, H-RV03-08, H-RV01-10 | 4 |
