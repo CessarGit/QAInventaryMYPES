@@ -75,10 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'stock',
+	// Credenciales desde el entorno (.env, no versionado). Tabla 13 de seguridad.
+	'hostname' => getenv('DB_HOST'),
+	'username' => getenv('DB_USER'),
+	'password' => getenv('DB_PASS'),
+	'database' => getenv('DB_NAME'),
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

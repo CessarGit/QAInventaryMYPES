@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/InventorySystem/';
+$config['base_url'] = getenv('APP_BASE_URL') ?: 'http://localhost/InventorySystem/';
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,8 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'Go87NSzqqq96Dq2jcjnvhVUCpKPeP2ea';
+// Clave desde el entorno (.env, no versionado). Tabla 13 de seguridad.
+$config['encryption_key'] = getenv('ENCRYPTION_KEY') ?: '';
 
 /*
 |--------------------------------------------------------------------------

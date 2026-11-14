@@ -20,6 +20,7 @@ umask 077
 sed \
     -e "s/^DB_PASS=.*/DB_PASS=$(generar)/" \
     -e "s/^DB_ROOT_PASS=.*/DB_ROOT_PASS=$(generar)/" \
+    -e "s/^ENCRYPTION_KEY=.*/ENCRYPTION_KEY=$(openssl rand -hex 16)/" \
     -e "s/^HOST_UID=.*/HOST_UID=$(id -u)/" \
     -e "s/^HOST_GID=.*/HOST_GID=$(id -g)/" \
     .env.example > .env

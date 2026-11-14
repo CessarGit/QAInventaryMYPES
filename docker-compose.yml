@@ -21,6 +21,9 @@ services:
       DB_NAME: ${DB_NAME:?Falta DB_NAME en .env}
       DB_USER: ${DB_USER:?Falta DB_USER en .env}
       DB_PASS: ${DB_PASS:?Falta DB_PASS en .env}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Falta ENCRYPTION_KEY en .env}
+      # Opcional: config.php usa http://localhost/InventorySystem/ si está vacía.
+      APP_BASE_URL: ${APP_BASE_URL:-}
     volumes:
       # Se monta en /InventorySystem para que coincida con base_url (config.php:26).
       - ./:/var/www/html/InventorySystem
