@@ -1,0 +1,56 @@
+# Entorno de staging (Tabla 9 de pruebas: staging en Docker con MySQL 5.7).
+# Versiones según la Tabla 2. Controles de la Tabla 13 de seguridad:
+# "Contenedores de staging" (contraseñas propias, sin puertos innecesarios)
+# y "Firewall" (la base de datos no se expone).
+# Credenciales: archivo .env (no versionado); ver .env.example.
+
+name: inventario
+
+services:
+  app:
+    build:
+      context: ./docker/app
+      args:
+        HOST_UID: ${HOST_UID:-1000}
+        HOST_GID: ${HOST_GID:-1000}
+    image: inventario-app:7.4.33
+    restart: unless-stopped
+    environment:
+      CI_ENV: ${CI_ENV:-development}
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:?Falta DB_NAME en .env}
+      DB_USER: ${DB_USER:?Falta DB_USER en .env}
+      DB_PASS: ${DB_PASS:?Falta DB_PASS en .env}
+    volumes:
+      # Se monta en /InventorySystem para que coincida con base_url (config.php:26).
+      - ./:/var/www/html/InventorySystem
+    ports:
+      # Solo accesible desde esta máquina.
+      - "127.0.0.1:${APP_PORT:-80}:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:5.7.44
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:?Falta DB_NAME en .env}
+      MYSQL_USER: ${DB_USER:?Falta DB_USER en .env}
+      MYSQL_PASSWORD: ${DB_PASS:?Falta DB_PASS en .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:?Falta DB_ROOT_PASS en .env}
+      TZ: America/Lima
+    volumes:
+      - db_data:/var/lib/mysql
+      # Dump inicial: solo se ejecuta cuando el volumen está vacío.
+      - ./stock.sql:/docker-entrypoint-initdb.d/01-stock.sql:ro
+    # Sin "ports": la base no se publica. Acceso: docker compose exec db mysql ...
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  db_data:

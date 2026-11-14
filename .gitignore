@@ -15,3 +15,6 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+
+# Secretos del entorno (Tabla 13 de seguridad)
+.env
