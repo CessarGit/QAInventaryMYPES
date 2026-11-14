@@ -82,9 +82,7 @@ class Productos_reporte_test extends Pc0TestCase
 	 * CP-09 · Una venta se refleja en el reporte anual.
 	 * Importe que suma el reporte: neto, con cargos e IVA (D-03).
 	 * Esperado: la venta se refleja en los totales del año.
-	 *
-	 * @group defecto-abierto
-	 * Defecto abierto: #37.
+	 * Defecto corregido: #37.
 	 */
 	public function test_CP09_venta_se_refleja_en_el_reporte_anual()
 	{
