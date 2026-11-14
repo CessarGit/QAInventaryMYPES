@@ -30,12 +30,32 @@
 ```
 docs/
   README.md                  índice
-  calidad/                   fuente-informe.md, matriz-roles.md, trazabilidad.md,
-                             hallazgos-topdown.md, plan-pruebas-iteracion-1.md
+  calidad/                   fuente-informe.md, fuente-informe-2.md, matriz-roles.md,
+                             trazabilidad.md, hallazgos-topdown.md,
+                             plan-pruebas-iteracion-1.md, decisiones-autor.md,
+                             registro-ejecucion.md
+    plantillas/              plantilla-revision.md
+    revisiones/              RV-xx (una por revisión) y README.md (indicadores)
   ejecucion/                 bitacora.md, plantilla-paso.md, evidencias/
   arquitectura/              diagramas en Mermaid
 CHANGELOG.md                 formato Keep a Changelog
 ```
+
+## Referencias de diseño
+
+- `docs/calidad/fuente-informe.md` (parte 1) y `docs/calidad/fuente-informe-2.md` (parte 2).
+- Hallazgos ya confirmados: `docs/calidad/hallazgos-topdown.md` (H-01 a H-06, A-01, A-04).
+- Casos y resultados esperados: `docs/calidad/trazabilidad.md`. Decisiones del autor: `docs/calidad/decisiones-autor.md`.
+
+## Reglas de la Fase 2 (Hacer)
+
+11. **Una prueba nunca se modifica para que pase**, y el código nunca se cambia para "acomodar" una prueba fuera de una corrección aprobada (rama `fix/...`).
+12. **Si una prueba falla por un defecto real:** se marca con `@group defecto-abierto` y el número de issue en el docblock, se registra el defecto con la plantilla *Defecto* y se deja tal cual. Nunca se borra ni se salta en silencio.
+13. **Solo se corrigen defectos registrados de severidad crítica o alta**, con el cambio mínimo, en su propia rama `fix/...` y sin funcionalidad nueva (mantenimiento correctivo, Tabla 11 de mantenimiento).
+14. **Las pruebas automatizadas usan solo la base `stock_test`.** Nunca escriben en `stock`.
+15. **Los respaldos van en `backups/`, que está ignorado por git.** Nunca se versiona un dump ni se muestra su contenido.
+16. **Los datos de prueba (PC-0) se derivan de la matriz de roles**, a través del mapeo de permisos de `docs/calidad/revisiones/RV-01-matriz.md`.
+17. **Medición honesta:** si un resultado no alcanza el umbral, se reporta tal cual. No se redondea ni se reinterpreta.
 
 ## Estado de la iteración (el autor lo actualiza)
 

@@ -22,7 +22,7 @@ Detectados durante la revisión; no forman parte de la Tabla 8 del informe. Se r
 | ID | Hallazgo | Estado | Evidencia | Recomendación | Tipo de mantenimiento | Issue |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | A-01 | Posible escalada de privilegios: al cambiar la contraseña en Settings, el servidor acepta un campo `groups` del POST y actualiza el grupo del propio usuario. El formulario no lo envía, pero nada impide añadirlo. La protección CSRF está desactivada | Por verificar (no se ejecutó) | `application/controllers/Users.php:276` pasa `$this->input->post('groups')` a `Model_users::edit`, que actualiza `user_group` si recibe un grupo (`application/models/Model_users.php:62-67`); `application/views/users/setting.php` no contiene el campo; `application/config/config.php:451` | Verificar en staging en el paso 5 con un caso de seguridad (relacionado con CP-10). Si se confirma, registrar con la plantilla Defecto, severidad crítica (Tabla 18: rojo) | Correctivo (si se confirma) | — (plantilla Defecto si se confirma en el paso 5) |
-| A-04 | El acceso de administrador del dashboard depende de `user_id == 1`, fuera de la matriz de roles | Confirmado | `application/controllers/Dashboard.php:31` | Basar la decisión en el grupo y sus permisos (relación con H-01) | Preventivo | #8 |
+| A-04 | El acceso de administrador del dashboard depende de `user_id == 1`, fuera de la matriz de roles | Confirmado | `application/controllers/Dashboard.php:32` | Basar la decisión en el grupo y sus permisos (relación con H-01) | Preventivo | #8 |
 
 ## Resumen
 

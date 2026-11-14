@@ -3,7 +3,6 @@
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
-      "Bash(git push:*)",
       "Bash(git reset --hard:*)",
       "Bash(git filter-branch:*)",
       "Bash(docker compose down -v:*)",
