@@ -151,9 +151,7 @@ class Permisos_test extends Pc0TestCase
 	/**
 	 * CP-15 · Ventas intenta cambiar su grupo desde Settings (campo groups añadido a mano).
 	 * Esperado: el grupo de ventas_test no cambia (Tabla 5). Origen: A-01.
-	 *
-	 * @group defecto-abierto
-	 * Defecto abierto: #34.
+	 * Defecto corregido: #34.
 	 */
 	public function test_CP15_ventas_intenta_cambiar_su_grupo_desde_settings()
 	{
